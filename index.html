@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ğŸ  Pinkè‡ªå¾‹å·¥ä½œå°</title>
+<title>? Pink×ÔÂÉ¹¤×÷Ì¨</title>
 <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBJTksg55So56CB86WWveW6lw==IiwKICAic2hvcnRfbmFtZSI6IuW6lw==IiwKICAic3RhcnRfdXJsIjoiLiIsCiAgImRpc3BsYXkiOiJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6IiNGRkU2RUYiLAogICJ0aGVtZV9jb2xvciI6IiNGOEI4RDAiLAogICJpY29ucyI6WwogICAgewogICAgICAic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiUzRSUzQ3JlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0Y4QjhEMCIvJTNFJTNDdGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiJTNF8aeW5CUzQyUlMjtlM0N0ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6IjE5MngxOTIiLAogICAgICAidHlwZSI6ImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -14,101 +14,229 @@
 --sub:#FFE6EF;
 --card:#FFF5F9;
 --accent:#E888B0;
+--accent-deep:#D96BA0;
 --text:#333333;
+--text-light:#666666;
 --light:#ffffff;
+--shadow:0 2px 12px rgba(232,136,176,0.12);
+--shadow-hover:0 4px 18px rgba(232,136,176,0.22);
+--radius:16px;
+--radius-sm:10px;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
-body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
-/* é¡¶éƒ¨å®æ—¶æ—¶é—´æ  */
+*{margin:0;padding:0;box-sizing:border-box;
+font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+-webkit-font-smoothing:antialiased;
+}
+body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;line-height:1.6;}
+
+/* ¶¥²¿ÊµÊ±Ê±¼äÀ¸ */
 .top-datetime{
-background:var(--main);
-color:#fff;
-text-align:center;
-padding:12px 8px;
-font-size:15px;
-font-weight:500;
+background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
+color:#fff;text-align:center;
+padding:11px 8px;font-size:14px;font-weight:500;
 position:sticky;top:0;z-index:100;
-box-shadow:0 2px 6px #00000012;
+box-shadow:0 2px 8px rgba(232,136,176,0.3);
+letter-spacing:0.5px;
 }
-/* ä¸»ä½“å®¹å™¨ï¼šå¤§å±å·¦å³å¸ƒå±€ï¼Œå°å±ä¸Šä¸‹ */
-.wrapper{
-display:flex;flex:1;
-}
-/* ä¾§è¾¹ç«–å¯¼èˆªï¼ˆå¤§å±ï¼‰ */
+/* Ö÷ÌåÈİÆ÷ */
+.wrapper{display:flex;flex:1;}
+
+/* ²à±ßÊúµ¼º½£¨ÓÅ»¯°æ£© */
 .sidebar{
-width:130px;background:#fff;padding:16px 8px;
-display:flex;flex-direction:column;gap:8px;
+width:140px;background:#fff;padding:18px 10px;
+display:flex;flex-direction:column;gap:6px;
+position:sticky;top:44px;height:calc(100vh - 44px);overflow-y:auto;
+box-shadow:2px 0 12px rgba(232,136,176,0.08);
 }
 .sidebar .nav-btn{
-width:100%;white-space:nowrap;padding:11px 8px;border-radius:12px;border:none;
+width:100%;white-space:nowrap;padding:11px 10px;border-radius:var(--radius-sm);border:none;
 background:var(--card);color:var(--accent);font-size:13px;text-align:left;
+cursor:pointer;transition:all 0.2s;font-weight:500;
+display:flex;align-items:center;gap:6px;
 }
-.sidebar .nav-btn.active{background:var(--accent);color:#fff;}
-/* å†…å®¹åŒºåŸŸ */
-.main-content{
-flex:1;padding:14px;overflow-y:auto;max-width:680px;
+.sidebar .nav-btn:hover{background:var(--sub);transform:translateX(2px);}
+.sidebar .nav-btn.active{
+background:linear-gradient(135deg,#E888B0 0%,#D96BA0 100%);
+color:#fff;box-shadow:0 3px 10px rgba(232,136,176,0.4);
 }
+.sidebar .nav-btn .icon{font-size:16px;}
+
+/* ÄÚÈİÇøÓò */
+.main-content{flex:1;padding:16px;overflow-y:auto;max-width:720px;margin:0 auto;width:100%;}
+
+/* ËÑË÷¿ò */
 .search-box{
-width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--main);
-background:#fff;margin-bottom:16px;font-size:15px;outline:none;
+width:100%;padding:11px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--main);
+background:#fff;margin-bottom:14px;font-size:14px;outline:none;
+transition:border 0.2s,box-shadow 0.2s;
 }
+.search-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,136,176,0.15);}
+
+/* ¿¨Æ¬ */
 .card{
-background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;
-box-shadow:0 1px 6px #0000000c;
+background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;
+box-shadow:var(--shadow);transition:box-shadow 0.2s;
 }
-.card-head{
-display:flex;justify-content:space-between;align-items:center;
-margin-bottom:10px;
-}
-.card-title{font-weight:600;color:var(--accent);font-size:16px;}
-.card-time{font-size:12px;color:#888;}
-.card-content{line-height:1.7;font-size:15px;margin:10px 0;white-space:pre-wrap;}
+.card:hover{box-shadow:var(--shadow-hover);}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.card-title{font-weight:600;color:var(--accent-deep);font-size:15px;}
+.card-time{font-size:12px;color:#999;}
+.card-content{line-height:1.8;font-size:14px;margin:10px 0;white-space:pre-wrap;color:var(--text);}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
 .btn{
-padding:7px 11px;border-radius:9px;border:none;font-size:13px;cursor:pointer;
+padding:7px 12px;border-radius:8px;border:none;font-size:13px;cursor:pointer;
+transition:transform 0.15s,opacity 0.15s;
 }
-.btn-primary{background:var(--accent);color:#fff;}
-.btn-light{background:var(--sub);color:var(--accent);}
-.btn-danger{background:#ffdddd;color:#c44444;}
+.btn:hover{transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+.btn-primary{background:linear-gradient(135deg,#E888B0,#D96BA0);color:#fff;}
+.btn-light{background:var(--sub);color:var(--accent-deep);}
+.btn-danger{background:#ffe0e0;color:#c44;}
+
+/* Ğü¸¡ĞÂÔö°´Å¥ */
 .add-btn-wrap{position:fixed;right:22px;bottom:22px;z-index:98;}
 .add-btn{
-width:58px;height:58px;border-radius:50%;border:none;
-background:var(--accent);color:#fff;font-size:30px;box-shadow:0 4px 12px #00000022;
+width:56px;height:56px;border-radius:50%;border:none;
+background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
+color:#fff;font-size:28px;box-shadow:0 6px 18px rgba(232,136,176,0.4);
+cursor:pointer;transition:transform 0.2s;
 }
+.add-btn:hover{transform:scale(1.06) rotate(90deg);}
+.add-btn:active{transform:scale(0.96);}
+
 .section{display:none;}
-.section.show{display:block;}
-.fav-mark{color:#ffb800;}
-/* å¼¹çª—æ ·å¼ */
+.section.show{display:block;animation:fadeIn 0.3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.fav-mark{color:#ffc107;}
+
+/* µ¯´° */
 .modal-mask{
-position:fixed;inset:0;background:#00000055;z-index:200;display:none;align-items:center;justify-content:center;padding:16px;
+position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;
+align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px);
 }
-.modal-mask.open{display:flex;}
+.modal-mask.open{display:flex;animation:fadeIn 0.2s;}
 .modal{
-width:100%;max-width:540px;background:#fff;border-radius:20px;padding:22px;
+width:100%;max-width:520px;background:#fff;border-radius:20px;padding:22px;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
 }
 .modal textarea{
-width:100%;min-height:130px;padding:12px;border-radius:12px;border:1px solid var(--main);margin:12px 0;font-size:15px;outline:none;
+width:100%;min-height:120px;padding:12px;border-radius:12px;border:1.5px solid var(--main);
+margin:10px 0;font-size:14px;outline:none;font-family:inherit;resize:vertical;
 }
-.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#777;}
-.empty-tip{text-align:center;padding:50px 0;color:#999;}
+.modal textarea:focus{border-color:var(--accent);}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.modal-top span{font-weight:600;color:var(--accent-deep);font-size:16px;}
+.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#999;line-height:1;}
+.modal-close:hover{color:#333;}
+.empty-tip{text-align:center;padding:50px 0;color:#bbb;font-size:14px;}
 
-/* ğŸ“±å°å±å¹•é€‚é…ï¼šå®½åº¦<768pxï¼Œä¾§è¾¹æ åˆ‡æ¢åº•éƒ¨æ¨ªå‘å¯¼èˆª */
+/* ===== ¸öÈËÍ·Ïñºá·ù ===== */
+.profile-banner{
+background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 50%,#D96BA0 100%);
+border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;
+color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.profile-banner::before{
+content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;
+background:rgba(255,255,255,0.12);border-radius:50%;
+}
+.profile-banner::after{
+content:"";position:absolute;bottom:-40px;left:-20px;width:100px;height:100px;
+background:rgba(255,255,255,0.08);border-radius:50%;
+}
+.profile-row{display:flex;align-items:center;gap:16px;position:relative;z-index:1;}
+.profile-avatar{
+width:64px;height:64px;border-radius:50%;background:#fff;
+display:flex;align-items:center;justify-content:center;font-size:34px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;cursor:pointer;
+}
+.profile-info{flex:1;min-width:0;}
+.profile-name{font-size:19px;font-weight:600;margin-bottom:4px;}
+.profile-sig{font-size:13px;opacity:0.92;}
+.profile-edit{background:rgba(255,255,255,0.25);border:none;color:#fff;padding:6px 12px;
+border-radius:99px;font-size:12px;cursor:pointer;flex-shrink:0;}
+.profile-edit:hover{background:rgba(255,255,255,0.4);}
+
+/* ===== Í³¼Æ¿´°å ===== */
+.stats-grid{
+display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;
+}
+.stat-card{
+background:#fff;border-radius:var(--radius);padding:14px 8px;text-align:center;
+box-shadow:var(--shadow);
+}
+.stat-num{font-size:22px;font-weight:700;color:var(--accent-deep);line-height:1.2;}
+.stat-label{font-size:11px;color:var(--text-light);margin-top:4px;}
+.stat-recent{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
+.stat-recent-title{font-size:13px;color:var(--text-light);margin-bottom:8px;}
+.stat-recent-list{display:flex;flex-wrap:wrap;gap:6px;}
+.stat-tag{background:var(--card);color:var(--accent-deep);padding:4px 10px;border-radius:99px;font-size:12px;}
+
+/* ===== ´ò¿¨ÈÕÀú ===== */
+.calendar-wrap{background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow);}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.calendar-head .month{font-weight:600;color:var(--accent-deep);font-size:15px;}
+.cal-nav{background:var(--card);border:none;color:var(--accent-deep);width:28px;height:28px;
+border-radius:8px;cursor:pointer;font-size:15px;}
+.cal-nav:hover{background:var(--sub);}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-week{text-align:center;font-size:11px;color:#bbb;padding:4px 0;}
+.cal-day{
+aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+font-size:13px;border-radius:8px;cursor:pointer;position:relative;
+background:#fafafa;color:var(--text);transition:background 0.15s;
+}
+.cal-day:hover{background:var(--sub);}
+.cal-day.empty{background:transparent;cursor:default;}
+.cal-day.today{font-weight:700;color:var(--accent-deep);border:1.5px solid var(--accent);}
+.cal-day.checked{
+background:linear-gradient(135deg,#F8B8D0,#E888B0);color:#fff;font-weight:600;
+}
+.cal-day.checked::after{
+content:"?";position:absolute;bottom:2px;right:3px;font-size:9px;
+}
+.cal-legend{display:flex;gap:14px;margin-top:12px;font-size:12px;color:var(--text-light);justify-content:center;}
+.cal-legend span{display:flex;align-items:center;gap:4px;}
+.cal-dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+.cal-streak{
+background:linear-gradient(135deg,#FFF5F9,#FFE6EF);border-radius:12px;
+padding:12px 16px;margin-top:12px;text-align:center;color:var(--accent-deep);font-size:13px;
+}
+.cal-streak b{font-size:18px;color:var(--accent-deep);}
+
+/* ===== ĞÄÇéÈÕ¼Ç ===== */
+.mood-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;}
+.mood-btn{
+width:42px;height:42px;border-radius:50%;border:2px solid transparent;
+background:var(--card);font-size:22px;cursor:pointer;transition:all 0.2s;
+}
+.mood-btn:hover{transform:scale(1.1);}
+.mood-btn.selected{border-color:var(--accent);background:#fff;transform:scale(1.1);}
+.mood-item{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);}
+.mood-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.mood-emoji{font-size:24px;}
+.mood-date{font-size:12px;color:#999;}
+.mood-text{font-size:14px;line-height:1.7;color:var(--text);white-space:pre-wrap;}
+
+/* Ğ¡ÆÁÊÊÅä */
 .bottom-nav{display:none;}
 @media (max-width:768px){
 .wrapper{flex-direction:column;}
 .sidebar{display:none;}
 .bottom-nav{
 display:flex;overflow-x:auto;background:#fff;padding:10px 6px;gap:6px;
-position:sticky;bottom:0;scrollbar-width:none;
+position:sticky;bottom:0;scrollbar-width:none;z-index:99;
+box-shadow:0 -2px 12px rgba(232,136,176,0.1);
 }
 .bottom-nav::-webkit-scrollbar{display:none;}
 .bottom-nav .nav-btn{
-white-space:nowrap;padding:8px 12px;border-radius:99px;border:none;
-background:var(--card);color:var(--accent);font-size:13px;
+white-space:nowrap;padding:8px 14px;border-radius:99px;border:none;
+background:var(--card);color:var(--accent-deep);font-size:13px;cursor:pointer;
 }
-.bottom-nav .nav-btn.active{background:var(--accent);color:#fff;}
+.bottom-nav .nav-btn.active{background:linear-gradient(135deg,#E888B0,#D96BA0);color:#fff;}
 body{padding-bottom:70px;}
+.stats-grid{grid-template-columns:repeat(2,1fr);}
+.main-content{padding:12px;}
 }
 </style>
 </head>
@@ -116,302 +244,501 @@ body{padding-bottom:70px;}
 <div class="top-datetime" id="timeBar"></div>
 
 <div class="wrapper">
-    <!-- å·¦ä¾§ã€ç«–æ’ä¾§è¾¹å¯¼èˆªã€‘å¤§å±å¯è§ -->
-    <div class="sidebar">
-        <button class="nav-btn active" data-target="home">ğŸ é¦–é¡µ</button>
-        <button class="nav-btn" data-target="fit">ğŸ¥—å‡è„‚ç®¡ç†</button>
-        <button class="nav-btn" data-target="bill">ğŸ’°å®¶åº­è®°è´¦</button>
-        <button class="nav-btn" data-target="text">ğŸ“œæ–‡æ¡ˆç´ æåº“</button>
-        <button class="nav-btn" data-target="photo">ğŸ“¸æ‹ç…§ç¬”è®°</button>
-        <button class="nav-btn" data-target="makeup">ğŸ’„å¦†å®¹åˆ†äº«</button>
-        <button class="nav-btn" data-target="kid">ğŸ“–å­©å­ä½œä¸šåŒº</button>
+    <div class="sidebar" id="sidebar">
+        <button class="nav-btn active" data-target="home"><span class="icon">?</span>Ê×Ò³</button>
+        <button class="nav-btn" data-target="mood"><span class="icon">?</span>ĞÄÇéÈÕ¼Ç</button>
+        <button class="nav-btn" data-target="calendar"><span class="icon">?</span>´ò¿¨ÈÕÀú</button>
+        <button class="nav-btn" data-target="fit"><span class="icon">?</span>¼õÖ¬¹ÜÀí</button>
+        <button class="nav-btn" data-target="bill"><span class="icon">?</span>¼ÒÍ¥¼ÇÕË</button>
+        <button class="nav-btn" data-target="text"><span class="icon">?</span>ÎÄ°¸ËØ²Ä</button>
+        <button class="nav-btn" data-target="photo"><span class="icon">?</span>ÅÄÕÕ±Ê¼Ç</button>
+        <button class="nav-btn" data-target="makeup"><span class="icon">?</span>×±Èİ·ÖÏí</button>
+        <button class="nav-btn" data-target="kid"><span class="icon">?</span>º¢×Ó×÷Òµ</button>
     </div>
 
-    <!-- ä¸»å†…å®¹åŒºåŸŸ -->
     <div class="main-content">
-        <!--é¦–é¡µ-->
+        <!--Ê×Ò³-->
         <div class="section show" id="home">
+            <!-- ¸öÈËÍ·Ïñºá·ù -->
+            <div class="profile-banner">
+                <div class="profile-row">
+                    <div class="profile-avatar" id="profileAvatar" title="µã»÷»»Í·Ïñ">?</div>
+                    <div class="profile-info">
+                        <div class="profile-name" id="profileName">Pink Ğ¡½ã½ã</div>
+                        <div class="profile-sig" id="profileSig">ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®?</div>
+                    </div>
+                    <button class="profile-edit" id="editProfile">?? ±à¼­</button>
+                </div>
+            </div>
+
+            <!-- Êı¾İÍ³¼Æ¿´°å -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">×Ü¼ÇÂ¼</div></div>
+                <div class="stat-card"><div class="stat-num" id="statFav">0</div><div class="stat-label">ÊÕ²Ø</div></div>
+                <div class="stat-card"><div class="stat-num" id="statChecked">0</div><div class="stat-label">´ò¿¨Ìì</div></div>
+                <div class="stat-card"><div class="stat-num" id="statMood">0</div><div class="stat-label">ĞÄÇéÌõ</div></div>
+            </div>
+            <div class="stat-recent">
+                <div class="stat-recent-title">? ¸÷Ä£¿é¼ÇÂ¼Êı</div>
+                <div class="stat-recent-list" id="statModules"></div>
+            </div>
+
+            <!-- Ê×Ò³»¶Ó­¿¨Æ¬ -->
             <div class="card">
-                <div class="card-title">ğŸ’– Pinkè‡ªå¾‹å¤šåŠŸèƒ½å·¥ä½œå°</div>
+                <div class="card-title">? Pink×ÔÂÉ¶à¹¦ÄÜ¹¤×÷Ì¨</div>
                 <div class="card-content">
-å‡è„‚ï½œè®°è´¦ï½œæ–‡æ¡ˆï½œæ‘„å½±ï½œå¦†å®¹ï½œäº²å­å­¦ä¹ <br><br>
-å¥½å¥½ç”Ÿæ´»ï¼ŒæŒç»­å˜ç¾ï¼Œç¨³æ­¥æé’±âœ¨
+¼õÖ¬£ü¼ÇÕË£üÎÄ°¸£üÉãÓ°£ü×±Èİ£üÇ××ÓÑ§Ï°£üĞÄÇéÈÕ¼Ç£ü´ò¿¨ÈÕÀú<br><br>
+Ã¿Ìì½ø²½Ò»µãµã£¬Óö¼û¸üºÃµÄ×Ô¼º?
                 </div>
             </div>
         </div>
 
-        <!--å‡è„‚-->
+        <!--ĞÄÇéÈÕ¼Ç-->
+        <div class="section" id="mood">
+            <div class="card">
+                <div class="card-title">? ½ñÈÕĞÄÇé</div>
+                <div class="mood-row" id="moodPicker">
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="?">?</button>
+                </div>
+                <textarea id="moodText" placeholder="½ñÌì·¢ÉúÁËÊ²Ã´£¿Ğ´Ò»¾ä»°¼ÇÂ¼°É¡«" style="width:100%;min-height:80px;padding:12px;border-radius:12px;border:1.5px solid var(--main);font-size:14px;outline:none;font-family:inherit;resize:vertical;"></textarea>
+                <div class="btn-row">
+                    <button class="btn btn-primary" id="saveMood">±£´æ½ñÈÕĞÄÇé</button>
+                </div>
+            </div>
+            <div id="moodList"></div>
+        </div>
+
+        <!--´ò¿¨ÈÕÀú-->
+        <div class="section" id="calendar">
+            <div class="calendar-wrap">
+                <div class="calendar-head">
+                    <button class="cal-nav" id="calPrev">?</button>
+                    <span class="month" id="calMonth">2026Äê7ÔÂ</span>
+                    <button class="cal-nav" id="calNext">?</button>
+                </div>
+                <div class="calendar-grid" id="calGrid"></div>
+                <div class="cal-legend">
+                    <span><span class="cal-dot" style="background:linear-gradient(135deg,#F8B8D0,#E888B0);"></span>ÒÑ´ò¿¨</span>
+                    <span><span class="cal-dot" style="background:#fafafa;border:1px solid #eee;"></span>Î´´ò¿¨</span>
+                    <span><span class="cal-dot" style="background:#fff;border:1.5px solid var(--accent);"></span>½ñÌì</span>
+                </div>
+                <div class="cal-streak" id="calStreak">? Á¬Ğø´ò¿¨ <b>0</b> Ìì ¡¤ ÀÛ¼Æ <b>0</b> Ìì</div>
+            </div>
+            <div class="card">
+                <div class="card-title">? ½ñÈÕ´ò¿¨</div>
+                <div class="card-content" id="todayCheckStatus">½ñÈÕ»¹Î´´ò¿¨£¬µã»÷ÏÂ·½°´Å¥¿ªÊ¼°É¡«</div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" id="checkToday">Íê³É½ñÈÕ´ò¿¨</button>
+                </div>
+            </div>
+        </div>
+
+        <!--¼õÖ¬-->
         <div class="section" id="fit">
-            <input class="search-box" placeholder="ğŸ” æœç´¢å‡è„‚ç›¸å…³å†…å®¹..." data-type="fit">
+            <input class="search-box" placeholder="? ËÑË÷¼õÖ¬Ïà¹ØÄÚÈİ..." data-type="fit">
             <div id="list-fit"></div>
         </div>
-
-        <!--è®°è´¦-->
+        <!--¼ÇÕË-->
         <div class="section" id="bill">
-            <input class="search-box" placeholder="ğŸ” æœç´¢è®°è´¦æ”¶æ”¯å†…å®¹..." data-type="bill">
+            <input class="search-box" placeholder="? ËÑË÷¼ÇÕËÊÕÖ§ÄÚÈİ..." data-type="bill">
             <div id="list-bill"></div>
         </div>
-
-        <!--æ–‡æ¡ˆåº“-->
+        <!--ÎÄ°¸¿â-->
         <div class="section" id="text">
-            <input class="search-box" placeholder="ğŸ” æœç´¢æ–‡æ¡ˆç´ æ..." data-type="text">
+            <input class="search-box" placeholder="? ËÑË÷ÎÄ°¸ËØ²Ä..." data-type="text">
             <div id="list-text"></div>
         </div>
-
-        <!--æ‹ç…§-->
+        <!--ÅÄÕÕ-->
         <div class="section" id="photo">
-            <input class="search-box" placeholder="ğŸ” æœç´¢æ‘„å½±ç¬”è®°..." data-type="photo">
+            <input class="search-box" placeholder="? ËÑË÷ÉãÓ°±Ê¼Ç..." data-type="photo">
             <div id="list-photo"></div>
         </div>
-
-        <!--å¦†å®¹-->
+        <!--×±Èİ-->
         <div class="section" id="makeup">
-            <input class="search-box" placeholder="ğŸ” æœç´¢å¦†å®¹åˆ†äº«..." data-type="makeup">
+            <input class="search-box" placeholder="? ËÑË÷×±Èİ·ÖÏí..." data-type="makeup">
             <div id="list-makeup"></div>
         </div>
-
-        <!--äº²å­ä½œä¸š-->
+        <!--Ç××Ó×÷Òµ-->
         <div class="section" id="kid">
-            <input class="search-box" placeholder="ğŸ” æœç´¢å­©å­å­¦ä¹ è®°å½•..." data-type="kid">
+            <input class="search-box" placeholder="? ËÑË÷º¢×ÓÑ§Ï°¼ÇÂ¼..." data-type="kid">
             <div id="list-kid"></div>
         </div>
     </div>
 </div>
 
-<!-- ğŸ“±æ‰‹æœºå°å±ï¼šåº•éƒ¨æ¨ªå‘å¯¼èˆªï¼ˆå±å¹•çª„è‡ªåŠ¨å‡ºç°ï¼‰ -->
 <div class="bottom-nav">
-    <button class="nav-btn active" data-target="home">ğŸ é¦–é¡µ</button>
-    <button class="nav-btn" data-target="fit">ğŸ¥—å‡è„‚</button>
-    <button class="nav-btn" data-target="bill">ğŸ’°è®°è´¦</button>
-    <button class="nav-btn" data-target="text">ğŸ“œæ–‡æ¡ˆ</button>
-    <button class="nav-btn" data-target="photo">ğŸ“¸æ‘„å½±</button>
-    <button class="nav-btn" data-target="makeup">ğŸ’„å¦†å®¹</button>
-    <button class="nav-btn" data-target="kid">ğŸ“–å­¦ä¹ </button>
+    <button class="nav-btn active" data-target="home">?Ê×Ò³</button>
+    <button class="nav-btn" data-target="mood">?ĞÄÇé</button>
+    <button class="nav-btn" data-target="calendar">?´ò¿¨</button>
+    <button class="nav-btn" data-target="fit">?¼õÖ¬</button>
+    <button class="nav-btn" data-target="bill">?¼ÇÕË</button>
+    <button class="nav-btn" data-target="text">?ÎÄ°¸</button>
+    <button class="nav-btn" data-target="photo">?ÉãÓ°</button>
+    <button class="nav-btn" data-target="makeup">?×±Èİ</button>
+    <button class="nav-btn" data-target="kid">?×÷Òµ</button>
 </div>
 
-<!--æ–°å¢æŒ‰é’®-->
-<div class="add-btn-wrap">
-<button class="add-btn" id="openAddModal">+</button>
-</div>
+<div class="add-btn-wrap"><button class="add-btn" id="openAddModal">+</button></div>
 
-<!--å¼¹çª—ï¼šæ–°å¢/ç¼–è¾‘å†…å®¹-->
+<!--µ¯´°£ºĞÂÔö/±à¼­ÄÚÈİ-->
 <div class="modal-mask" id="modal">
 <div class="modal">
 <div class="modal-top">
-<span id="modalTitle">æ–°å»ºå†…å®¹</span>
-<button class="modal-close" id="closeModal">Ã—</button>
+<span id="modalTitle">ĞÂ½¨ÄÚÈİ</span>
+<button class="modal-close" id="closeModal">¡Á</button>
 </div>
-<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--main);margin-bottom:10px;">
-<option value="fit">ğŸ¥—å‡è„‚ç®¡ç†</option>
-<option value="bill">ğŸ’°å®¶åº­è®°è´¦</option>
-<option value="text">ğŸ“œæ–‡æ¡ˆç´ æåº“</option>
-<option value="photo">ğŸ“¸æ‹ç…§ç¬”è®°</option>
-<option value="makeup">ğŸ’„å¦†å®¹åˆ†äº«</option>
-<option value="kid">ğŸ“–å­©å­ä½œä¸šåŒº</option>
+<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-bottom:10px;font-size:14px;outline:none;">
+<option value="fit">?¼õÖ¬¹ÜÀí</option>
+<option value="bill">?¼ÒÍ¥¼ÇÕË</option>
+<option value="text">?ÎÄ°¸ËØ²Ä¿â</option>
+<option value="photo">?ÅÄÕÕ±Ê¼Ç</option>
+<option value="makeup">?×±Èİ·ÖÏí</option>
+<option value="kid">?º¢×Ó×÷ÒµÇø</option>
 </select>
-<textarea id="modalContent" placeholder="è¾“å…¥å†…å®¹..."></textarea>
+<textarea id="modalContent" placeholder="ÊäÈëÄÚÈİ..."></textarea>
 <div style="display:flex;gap:12px;">
-<button class="btn btn-light" id="cancelSave">å–æ¶ˆ</button>
-<button class="btn btn-primary" id="submitSave">ä¿å­˜</button>
+<button class="btn btn-light" id="cancelSave">È¡Ïû</button>
+<button class="btn btn-primary" id="submitSave">±£´æ</button>
+</div>
+</div>
+</div>
+
+<!--µ¯´°£º±à¼­¸öÈË×ÊÁÏ-->
+<div class="modal-mask" id="profileModal">
+<div class="modal">
+<div class="modal-top">
+<span>?? ±à¼­¸öÈË×ÊÁÏ</span>
+<button class="modal-close" id="closeProfileModal">¡Á</button>
+</div>
+<div style="margin:10px 0;">
+<label style="font-size:13px;color:var(--text-light);">Í·Ïñ£¨ÊäÈë emoji »òÎÄ×Ö£©</label>
+<input id="inputAvatar" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:18px;outline:none;">
+</div>
+<div style="margin:10px 0;">
+<label style="font-size:13px;color:var(--text-light);">êÇ³Æ</label>
+<input id="inputName" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
+</div>
+<div style="margin:10px 0;">
+<label style="font-size:13px;color:var(--text-light);">¸öĞÔÇ©Ãû</label>
+<input id="inputSig" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
+</div>
+<div style="display:flex;gap:12px;margin-top:14px;">
+<button class="btn btn-light" id="cancelProfile">È¡Ïû</button>
+<button class="btn btn-primary" id="saveProfile">±£´æ</button>
 </div>
 </div>
 </div>
 
 <script>
-// ========== å…¨å±€æ•°æ®ä¸æœ¬åœ°å­˜å‚¨ ==========
+// ========== ´æ´¢ ==========
 const STORAGE_KEY = "pink_workbench_data";
+const PROFILE_KEY = "pink_profile";
+const CHECK_KEY = "pink_checkin";
+const MOOD_KEY = "pink_mood";
+
 let editId = null;
 let activeTab = "home";
+let selectedMood = null;
+let calCurrent = new Date();
 
-// åˆå§‹åŒ–æ•°æ®
-function loadData(){
-  const raw = localStorage.getItem(STORAGE_KEY);
-  return raw ? JSON.parse(raw) : [];
+function loadData(){ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : []; }
+function saveData(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
+function loadProfile(){
+  const raw = localStorage.getItem(PROFILE_KEY);
+  return raw ? JSON.parse(raw) : {avatar:"?", name:"Pink Ğ¡½ã½ã", sig:"ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®?"};
 }
-function saveData(list){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-}
+function saveProfile(p){ localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }
+function loadCheckin(){ const raw = localStorage.getItem(CHECK_KEY); return raw ? JSON.parse(raw) : []; }
+function saveCheckin(arr){ localStorage.setItem(CHECK_KEY, JSON.stringify(arr)); }
+function loadMood(){ const raw = localStorage.getItem(MOOD_KEY); return raw ? JSON.parse(raw) : []; }
+function saveMood(arr){ localStorage.setItem(MOOD_KEY, JSON.stringify(arr)); }
+
 let dataList = loadData();
+let checkinList = loadCheckin();
+let moodList = loadMood();
+let profile = loadProfile();
 
-// ========== é¡¶éƒ¨ç§’çº§æ—¶é—´ ==========
+// ========== ¶¥²¿Ê±¼ä ==========
 function updateTime(){
   const now = new Date();
-  const weekArr=["å‘¨æ—¥","å‘¨ä¸€","å‘¨äºŒ","å‘¨ä¸‰","å‘¨å››","å‘¨äº”","å‘¨å…­"];
-  const y = now.getFullYear();
-  const m = String(now.getMonth()+1).padStart(2,'0');
-  const d = String(now.getDate()).padStart(2,'0');
-  const w = weekArr[now.getDay()];
-  const h = String(now.getHours()).padStart(2,'0');
-  const mi = String(now.getMinutes()).padStart(2,'0');
-  const s = String(now.getSeconds()).padStart(2,'0');
-  document.getElementById("timeBar").innerText = `${y}å¹´${m}æœˆ${d}æ—¥ ${w} ${h}:${mi}:${s}`;
+  const weekArr=["ÖÜÈÕ","ÖÜÒ»","ÖÜ¶ş","ÖÜÈı","ÖÜËÄ","ÖÜÎå","ÖÜÁù"];
+  const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0');
+  const w=weekArr[now.getDay()];
+  const h=String(now.getHours()).padStart(2,'0'), mi=String(now.getMinutes()).padStart(2,'0'), s=String(now.getSeconds()).padStart(2,'0');
+  document.getElementById("timeBar").innerText = `${y}Äê${m}ÔÂ${d}ÈÕ ${w} ${h}:${mi}:${s}`;
 }
-updateTime();
-setInterval(updateTime,1000);
+updateTime(); setInterval(updateTime,1000);
 
-// ========== å¯¼èˆªåˆ‡æ¢ï¼ˆåŒæ—¶ç»‘å®šä¾§è¾¹ç«–å¯¼èˆª+åº•éƒ¨æ¨ªå¯¼èˆªï¼‰ ==========
+// ========== ¸öÈË×ÊÁÏ ==========
+function renderProfile(){
+  document.getElementById("profileAvatar").innerText = profile.avatar || "?";
+  document.getElementById("profileName").innerText = profile.name || "Pink Ğ¡½ã½ã";
+  document.getElementById("profileSig").innerText = profile.sig || "";
+}
+renderProfile();
+
+const profileModal = document.getElementById("profileModal");
+document.getElementById("editProfile").onclick = ()=>{
+  document.getElementById("inputAvatar").value = profile.avatar || "";
+  document.getElementById("inputName").value = profile.name || "";
+  document.getElementById("inputSig").value = profile.sig || "";
+  profileModal.classList.add("open");
+};
+document.getElementById("closeProfileModal").onclick = ()=>profileModal.classList.remove("open");
+document.getElementById("cancelProfile").onclick = ()=>profileModal.classList.remove("open");
+document.getElementById("profileAvatar").onclick = ()=>{
+  const emojis = ["?","?","?","?","?","?","?","?","?","?","?","?"];
+  let idx = emojis.indexOf(profile.avatar);
+  idx = (idx + 1) % emojis.length;
+  profile.avatar = emojis[idx];
+  saveProfile(profile); renderProfile();
+};
+document.getElementById("saveProfile").onclick = ()=>{
+  profile.avatar = document.getElementById("inputAvatar").value.trim() || "?";
+  profile.name = document.getElementById("inputName").value.trim() || "Pink Ğ¡½ã½ã";
+  profile.sig = document.getElementById("inputSig").value.trim() || "ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®?";
+  saveProfile(profile); renderProfile();
+  profileModal.classList.remove("open");
+};
+
+// ========== Í³¼Æ¿´°å ==========
+function renderStats(){
+  const today = new Date().toDateString();
+  document.getElementById("statTotal").innerText = dataList.length;
+  document.getElementById("statFav").innerText = dataList.filter(d=>d.favorite).length;
+  document.getElementById("statChecked").innerText = checkinList.length;
+  document.getElementById("statMood").innerText = moodList.length;
+  const moduleNames = {fit:"?¼õÖ¬",bill:"?¼ÇÕË",text:"?ÎÄ°¸",photo:"?ÉãÓ°",makeup:"?×±Èİ",kid:"?×÷Òµ"};
+  const wrap = document.getElementById("statModules");
+  let html = "";
+  Object.keys(moduleNames).forEach(k=>{
+    const n = dataList.filter(d=>d.type===k).length;
+    html += `<span class="stat-tag">${moduleNames[k]} ${n}</span>`;
+  });
+  wrap.innerHTML = html;
+}
+
+// ========== µ¼º½ ==========
 const allNavBtns = document.querySelectorAll(".nav-btn");
 const sections = document.querySelectorAll(".section");
 allNavBtns.forEach(btn=>{
   btn.onclick = ()=>{
     const target = btn.dataset.target;
     activeTab = target;
-    // åŒæ­¥åŒå‘å¯¼èˆªæ¿€æ´»çŠ¶æ€
     allNavBtns.forEach(b=>b.classList.remove("active"));
     document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(b=>b.classList.add("active"));
     sections.forEach(s=>s.classList.remove("show"));
     document.getElementById(target).classList.add("show");
+    if(target==="home") renderStats();
+    if(target==="calendar") renderCalendar();
+    if(target==="mood") renderMoodList();
     renderAllLists();
   }
 })
 
-// ========== æ¸²æŸ“åˆ—è¡¨ï¼ˆæ—¶é—´å€’åºï¼‰ ==========
+// ========== ÁĞ±íäÖÈ¾ ==========
 function renderList(type, keyword=""){
   const wrap = document.getElementById("list-"+type);
   let arr = dataList.filter(item=>item.type === type);
-  // æœ€æ–°ç½®é¡¶ æ—¶é—´å€’åº
   arr.sort((a,b)=>b.timeStamp - a.timeStamp);
-  // æœç´¢è¿‡æ»¤
-  if(keyword){
-    arr = arr.filter(item=>item.content.includes(keyword));
-  }
-  if(arr.length===0){
-    wrap.innerHTML = `<div class="empty-tip">æš‚æ— å†…å®¹ï¼Œç‚¹å‡»å³ä¸‹è§’ + æ·»åŠ </div>`;
-    return;
-  }
+  if(keyword) arr = arr.filter(item=>item.content.includes(keyword));
+  if(arr.length===0){ wrap.innerHTML = `<div class="empty-tip">ÔİÎŞÄÚÈİ£¬µã»÷ÓÒÏÂ½Ç + Ìí¼Ó</div>`; return; }
   let html = "";
   arr.forEach(item=>{
     const dateStr = new Date(item.timeStamp).toLocaleString();
-    const favIcon = item.favorite ? `<span class="fav-mark">â˜…</span>` : "";
+    const favIcon = item.favorite ? `<span class="fav-mark">¡ï</span>` : "";
     html += `
     <div class="card" data-id="${item.id}">
       <div class="card-head">
-        <span class="card-title">${favIcon}è®°å½•</span>
+        <span class="card-title">${favIcon}¼ÇÂ¼</span>
         <span class="card-time">${dateStr}</span>
       </div>
       <div class="card-content">${escapeHtml(item.content)}</div>
       <div class="btn-row">
-        <button class="btn btn-light copyBtn" data-id="${item.id}">å¤åˆ¶</button>
-        <button class="btn btn-light favBtn" data-id="${item.id}">${item.favorite?"å–æ¶ˆæ”¶è—":"æ”¶è—"}</button>
-        <button class="btn btn-light editBtn" data-id="${item.id}">ç¼–è¾‘</button>
-        <button class="btn btn-danger delBtn" data-id="${item.id}">åˆ é™¤</button>
+        <button class="btn btn-light copyBtn" data-id="${item.id}">¸´ÖÆ</button>
+        <button class="btn btn-light favBtn" data-id="${item.id}">${item.favorite?"È¡ÏûÊÕ²Ø":"ÊÕ²Ø"}</button>
+        <button class="btn btn-light editBtn" data-id="${item.id}">±à¼­</button>
+        <button class="btn btn-danger delBtn" data-id="${item.id}">É¾³ı</button>
       </div>
-    </div>
-    `
+    </div>`
   })
   wrap.innerHTML = html;
   bindItemEvent();
 }
-function renderAllLists(){
-  ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t));
-}
+function renderAllLists(){ ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t)); }
+function escapeHtml(str){ return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
-// htmlè½¬ä¹‰
-function escapeHtml(str){
-  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-}
-
-// ========== æ¡ç›®æŒ‰é’®äº‹ä»¶ï¼šå¤åˆ¶/æ”¶è—/ç¼–è¾‘/åˆ é™¤ ==========
 function bindItemEvent(){
   document.querySelectorAll(".copyBtn").forEach(btn=>{
     btn.onclick = async ()=>{
       const id = btn.dataset.id;
       const item = dataList.find(d=>d.id===id);
-      await navigator.clipboard.writeText(item.content);
-      alert("å·²å¤åˆ¶ï¼");
+      try { await navigator.clipboard.writeText(item.content); alert("ÒÑ¸´ÖÆ£¡"); }
+      catch(e){ prompt("ÇëÊÖ¶¯¸´ÖÆ£º", item.content); }
     }
   })
   document.querySelectorAll(".favBtn").forEach(btn=>{
-    btn.onclick = ()=>{
-      const id = btn.dataset.id;
-      const item = dataList.find(d=>d.id===id);
-      item.favorite = !item.favorite;
-      saveData(dataList);
-      renderAllLists();
-    }
+    btn.onclick = ()=>{ const id=btn.dataset.id; const item=dataList.find(d=>d.id===id); item.favorite=!item.favorite; saveData(dataList); renderAllLists(); renderStats(); }
   })
   document.querySelectorAll(".editBtn").forEach(btn=>{
-    btn.onclick = ()=>{
-      const id = btn.dataset.id;
-      const item = dataList.find(d=>d.id===id);
-      editId = id;
-      document.getElementById("modalTitle").innerText="ç¼–è¾‘å†…å®¹";
+    btn.onclick = ()=>{ const id=btn.dataset.id; const item=dataList.find(d=>d.id===id); editId=id;
+      document.getElementById("modalTitle").innerText="±à¼­ÄÚÈİ";
       document.getElementById("modalType").value = item.type;
       document.getElementById("modalContent").value = item.content;
-      openModal();
-    }
+      openModal(); }
   })
   document.querySelectorAll(".delBtn").forEach(btn=>{
-    btn.onclick = ()=>{
-      if(!confirm("ç¡®å®šåˆ é™¤è¿™æ¡è®°å½•ï¼Ÿ"))return;
-      const id = btn.dataset.id;
-      dataList = dataList.filter(d=>d.id!==id);
-      saveData(dataList);
-      renderAllLists();
-    }
+    btn.onclick = ()=>{ if(!confirm("È·¶¨É¾³ıÕâÌõ¼ÇÂ¼£¿"))return; const id=btn.dataset.id;
+      dataList = dataList.filter(d=>d.id!==id); saveData(dataList); renderAllLists(); renderStats(); }
   })
 }
 
-// ========== å¼¹çª—æ§åˆ¶ ==========
+// ========== µ¯´° ==========
 const modal = document.getElementById("modal");
 function openModal(){modal.classList.add("open");}
-function closeModal(){
-  modal.classList.remove("open");
-  editId = null;
-  document.getElementById("modalTitle").innerText="æ–°å»ºå†…å®¹";
-  document.getElementById("modalContent").value = "";
-}
+function closeModal(){ modal.classList.remove("open"); editId=null;
+  document.getElementById("modalTitle").innerText="ĞÂ½¨ÄÚÈİ";
+  document.getElementById("modalContent").value=""; }
 document.getElementById("openAddModal").onclick = ()=>{
-  // é»˜è®¤é€‰ä¸­å½“å‰åˆ†ç±»
-  if(activeTab !== "home") document.getElementById("modalType").value = activeTab;
+  if(activeTab !== "home" && activeTab !== "mood" && activeTab !== "calendar")
+    document.getElementById("modalType").value = activeTab;
   openModal();
 }
 document.getElementById("closeModal").onclick = closeModal;
 document.getElementById("cancelSave").onclick = closeModal;
-
-// ä¿å­˜æ–°å¢/ç¼–è¾‘
 document.getElementById("submitSave").onclick = ()=>{
   const type = document.getElementById("modalType").value;
   const content = document.getElementById("modalContent").value.trim();
-  if(!content){alert("è¯·è¾“å…¥å†…å®¹ï¼");return;}
+  if(!content){alert("ÇëÊäÈëÄÚÈİ£¡");return;}
   if(editId){
-    // ä¿®æ”¹
     const obj = dataList.find(d=>d.id===editId);
-    obj.type = type;
-    obj.content = content;
-    obj.timeStamp = Date.now();
-  }else{
-    // æ–°å»º
-    const newItem = {
-      id: String(Date.now()),
-      type: type,
-      content: content,
-      favorite: false,
-      timeStamp: Date.now()
-    }
-    dataList.unshift(newItem);
+    obj.type=type; obj.content=content; obj.timeStamp=Date.now();
+  } else {
+    dataList.unshift({ id:String(Date.now()), type, content, favorite:false, timeStamp:Date.now() });
   }
-  saveData(dataList);
-  renderAllLists();
-  closeModal();
+  saveData(dataList); renderAllLists(); renderStats(); closeModal();
 }
 
-// ========== æœç´¢ç»‘å®š ==========
+// ========== ËÑË÷ ==========
 document.querySelectorAll(".search-box").forEach(input=>{
-  input.oninput = ()=>{
-    const type = input.dataset.type;
-    const keyword = input.value.trim();
-    renderList(type, keyword);
-  }
+  input.oninput = ()=>{ renderList(input.dataset.type, input.value.trim()); }
 })
 
-// ========== PWAæ³¨å†Œ ==========
+// ========== ĞÄÇéÈÕ¼Ç ==========
+const moodBtns = document.querySelectorAll(".mood-btn");
+moodBtns.forEach(btn=>{
+  btn.onclick = ()=>{
+    selectedMood = btn.dataset.mood;
+    moodBtns.forEach(b=>b.classList.remove("selected"));
+    btn.classList.add("selected");
+  }
+})
+document.getElementById("saveMood").onclick = ()=>{
+  if(!selectedMood){ alert("ÇëÏÈÑ¡Ò»¸öĞÄÇé±íÇé¡«"); return; }
+  const text = document.getElementById("moodText").value.trim();
+  const today = new Date().toDateString();
+  // ¸²¸Ç½ñÌìµÄĞÄÇé
+  moodList = moodList.filter(m => new Date(m.timeStamp).toDateString() !== today);
+  moodList.unshift({ mood:selectedMood, text, timeStamp:Date.now() });
+  saveMood(moodList);
+  document.getElementById("moodText").value = "";
+  moodBtns.forEach(b=>b.classList.remove("selected"));
+  selectedMood = null;
+  renderMoodList(); renderStats();
+  alert("ĞÄÇéÒÑ¼ÇÂ¼ " + selectedMood);
+}
+function renderMoodList(){
+  const wrap = document.getElementById("moodList");
+  if(moodList.length===0){ wrap.innerHTML = `<div class="empty-tip">»¹Ã»ÓĞĞÄÇé¼ÇÂ¼£¬Ñ¡¸ö±íÇé¿ªÊ¼°É¡«</div>`; return; }
+  let html = "";
+  moodList.forEach((item, idx)=>{
+    const d = new Date(item.timeStamp);
+    const dateStr = `${d.getMonth()+1}ÔÂ${d.getDate()}ÈÕ ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+    html += `
+    <div class="mood-item">
+      <div class="mood-item-head">
+        <span class="mood-emoji">${item.mood}</span>
+        <span class="mood-date">${dateStr}</span>
+        <button class="btn btn-danger" style="margin-left:auto;padding:4px 10px;font-size:12px;" onclick="delMood(${idx})">É¾³ı</button>
+      </div>
+      <div class="mood-text">${escapeHtml(item.text || "£¨ÎŞÎÄ×Ö£©")}</div>
+    </div>`;
+  })
+  wrap.innerHTML = html;
+}
+function delMood(idx){
+  if(!confirm("É¾³ıÕâÌõĞÄÇé¼ÇÂ¼£¿")) return;
+  moodList.splice(idx,1); saveMood(moodList); renderMoodList(); renderStats();
+}
+window.delMood = delMood;
+
+// ========== ´ò¿¨ÈÕÀú ==========
+function renderCalendar(){
+  const y = calCurrent.getFullYear();
+  const m = calCurrent.getMonth();
+  document.getElementById("calMonth").innerText = `${y}Äê${m+1}ÔÂ`;
+  const firstDay = new Date(y, m, 1).getDay();
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+  const today = new Date();
+  const todayStr = today.toDateString();
+  let html = "";
+  ["ÈÕ","Ò»","¶ş","Èı","ËÄ","Îå","Áù"].forEach(w=>{ html += `<div class="cal-week">${w}</div>`; });
+  for(let i=0;i<firstDay;i++) html += `<div class="cal-day empty"></div>`;
+  for(let d=1; d<=daysInMonth; d++){
+    const dateObj = new Date(y, m, d);
+    const dateStr = dateObj.toDateString();
+    const checked = checkinList.includes(dateStr);
+    const isToday = dateStr === todayStr;
+    let cls = "cal-day";
+    if(checked) cls += " checked";
+    if(isToday) cls += " today";
+    html += `<div class="${cls}" data-date="${dateStr}">${d}</div>`;
+  }
+  document.getElementById("calGrid").innerHTML = html;
+  // Á¬Ğø´ò¿¨
+  let streak = 0, cursor = new Date(today);
+  while(checkinList.includes(cursor.toDateString())){
+    streak++;
+    cursor.setDate(cursor.getDate()-1);
+  }
+  document.getElementById("calStreak").innerHTML = `? Á¬Ğø´ò¿¨ <b>${streak}</b> Ìì ¡¤ ÀÛ¼Æ <b>${checkinList.length}</b> Ìì`;
+  // ½ñÈÕ×´Ì¬
+  const checkedToday = checkinList.includes(todayStr);
+  document.getElementById("todayCheckStatus").innerText = checkedToday
+    ? `? ½ñÈÕÒÑ´ò¿¨£¡¼ÌĞø±£³Ö¡«\n´ò¿¨Ê±¼ä£º${new Date().toLocaleString()}`
+    : `½ñÈÕ»¹Î´´ò¿¨£¬µã»÷ÏÂ·½°´Å¥¿ªÊ¼°É¡«`;
+  document.getElementById("checkToday").innerText = checkedToday ? "½ñÈÕÒÑ´ò¿¨ ?" : "Íê³É½ñÈÕ´ò¿¨";
+  document.getElementById("checkToday").disabled = checkedToday;
+  if(checkedToday) document.getElementById("checkToday").style.opacity = "0.6";
+  else document.getElementById("checkToday").style.opacity = "1";
+}
+document.getElementById("calPrev").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()-1); renderCalendar(); }
+document.getElementById("calNext").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()+1); renderCalendar(); }
+document.getElementById("checkToday").onclick = ()=>{
+  const todayStr = new Date().toDateString();
+  if(checkinList.includes(todayStr)){ alert("½ñÌìÒÑ¾­´ò¹ı¿¨À²¡«"); return; }
+  checkinList.push(todayStr);
+  saveCheckin(checkinList);
+  renderCalendar(); renderStats();
+}
+
+// ========== PWA ==========
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
 
-// åˆå§‹åŒ–æ¸²æŸ“
+// ³õÊ¼»¯
 renderAllLists();
+renderStats();
 </script>
 </body>
 </html>

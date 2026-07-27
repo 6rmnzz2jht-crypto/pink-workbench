@@ -2,200 +2,451 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#F8B8D0">
-<title>🏠 Pink自律工作台</title>
+<meta name="theme-color" content="#ffe8e0">
+<title>奶油多巴胺工作台</title>
 <style>
 :root{
---main:#F8B8D0;
---sub:#FFE6EF;
---card:#FFF5F9;
---accent:#E8689C;
---text:#333333;
+    /* 多巴胺奶油色系 */
+    --cream:#fffbf5;
+    --peach:#ffe8e0;
+    --pink:#f8c8c0;
+    --mint:#d7efe9;
+    --yellow:#fff2cc;
+    --lavender:#e9e4f8;
+    --text:#443835;
+    --gray:#887774;
+    --border:#f0e2dd;
+    --shadow:rgba(180,150,140,0.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
-body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
-.top-datetime{
-background:var(--main);
-color:#fff;
-text-align:center;
-padding:12px 8px;
-font-size:15px;
-font-weight:500;
-position:sticky;top:0;z-index:100;
-box-shadow:0 2px 6px #00000018;
-}
-.wrapper{display:flex;flex:1;}
+body{background:var(--cream);color:var(--text);min-height:100vh;display:flex;}
+
+/* =========左侧竖排导航栏========= */
 .sidebar{
-width:130px;background:#fff;padding:16px 8px;
-display:flex;flex-direction:column;gap:8px;
+    width:210px;
+    background:#fff;
+    padding:28px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    flex-shrink:0;
+    box-shadow:2px 0 10px var(--shadow);
+}
+.sidebar .nav-title{
+    font-size:18px;
+    font-weight:600;
+    padding:0 8px 16px;
+    color:#c98c82;
 }
 .sidebar .nav-btn{
-width:100%;white-space:nowrap;padding:11px 8px;border-radius:12px;border:none;
-background:var(--card);color:var(--accent);font-size:13px;text-align:left;
+    width:100%;
+    padding:13px 14px;
+    border-radius:14px;
+    border:none;
+    background:transparent;
+    text-align:left;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.24s;
 }
-.sidebar .nav-btn.active{background:var(--accent);color:#fff;}
-.main-content{
-flex:1;padding:14px;overflow-y:auto;max-width:680px;
+.sidebar .nav-btn.active{
+    background:var(--peach);
+    color:#b05c50;
+    font-weight:500;
+}
+.sidebar .nav-btn:hover:not(.active){
+    background:var(--cream);
+}
+
+/* 主内容区域 */
+.main-wrap{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+    overflow:hidden;
+}
+.top-bar{
+    background:var(--peach);
+    color:#804c45;
+    text-align:center;
+    padding:15px;
+    font-size:16px;
+    font-weight:500;
+}
+.content{
+    flex:1;
+    padding:18px;
+    overflow-y:auto;
+    max-width:960px;
+    margin:0 auto;
+    width:100%;
 }
 .search-box{
-width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--main);
-background:#fff;margin-bottom:16px;font-size:15px;outline:none;
+    width:100%;
+    padding:14px 16px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:#fff;
+    margin-bottom:16px;
+    font-size:15px;
 }
 .card{
-background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;
-box-shadow:0 1px 6px #0000000c;
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:16px;
+    box-shadow:0 2px 8px var(--shadow);
+    border:1px solid var(--border);
 }
 .card-head{
-display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
 }
-.card-title{font-weight:600;color:var(--accent);font-size:16px;}
-.card-time{font-size:12px;color:#888;}
-.card-content{line-height:1.7;font-size:15px;margin:10px 0;white-space:pre-wrap;}
-.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.card-title{
+    font-weight:600;
+    color:#c27b70;
+    font-size:16px;
+}
+.card-content{
+    line-height:1.7;
+    font-size:15px;
+    white-space:pre-wrap;
+    margin:8px 0;
+}
+.btn-row{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:12px;
+}
 .btn{
-padding:7px 11px;border-radius:9px;border:none;font-size:13px;cursor:pointer;
+    padding:9px 14px;
+    border-radius:12px;
+    border:none;
+    font-size:13px;
+    cursor:pointer;
+    transition:0.2s;
 }
-.btn-primary{background:var(--accent);color:#fff;}
-.btn-light{background:var(--sub);color:var(--accent);}
-.btn-danger{background:#ffdddd;color:#c44444;}
-.add-btn-wrap{position:fixed;right:22px;bottom:22px;z-index:98;}
+.btn-primary{background:var(--pink);color:#703e37;}
+.btn-light{background:var(--cream);color:#945c54;border:1px solid var(--border);}
+.btn-mint{background:var(--mint);color:#2e5c54;}
+.btn-yellow{background:var(--yellow);color:#775922;}
+.btn-danger{background:#fcdcd8;color:#a83c32;}
+
+/* 悬浮新增按钮 */
+.add-btn-wrap{
+    position:fixed;
+    right:26px;
+    bottom:26px;
+    z-index:99;
+}
 .add-btn{
-width:58px;height:58px;border-radius:50%;border:none;
-background:var(--accent);color:#fff;font-size:30px;box-shadow:0 4px 12px #00000022;
+    width:62px;height:62px;border-radius:50%;
+    border:none;background:var(--pink);color:#fff;
+    font-size:28px;
+    box-shadow:0 4px 14px rgba(240,180,170,0.4);
+    cursor:pointer;
 }
-.section{display:none;}
-.section.show{display:block;}
-.fav-mark{color:#ffbc2c;}
+
+/* 弹窗样式（支持图文视频语音） */
 .modal-mask{
-position:fixed;inset:0;background:#00000055;z-index:200;display:none;
-align-items:center;justify-content:center;padding:16px;
+    position:fixed;inset:0;background:rgba(80,60,55,0.35);
+    z-index:200;display:none;align-items:center;justify-content:center;
+    padding:16px;
 }
 .modal-mask.open{display:flex;}
 .modal{
-width:100%;max-width:540px;background:#fff;border-radius:20px;padding:22px;
-}
-.modal textarea{
-width:100%;min-height:130px;padding:12px;border-radius:12px;border:1px solid var(--main);
-margin:12px 0;font-size:15px;outline:none;
+    width:100%;max-width:600px;background:#fff;border-radius:22px;padding:24px;
+    max-height:88vh;overflow-y:auto;
 }
 .modal-top{
-display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;
 }
-.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#666;}
-.empty-tip{text-align:center;padding:50px 0;color:#888;}
+.modal-close{border:none;background:none;font-size:28px;cursor:pointer;color:#997772;}
+.modal textarea{
+    width:100%;min-height:160px;padding:14px;border-radius:14px;border:1px solid var(--border);
+    margin:10px 0;font-size:15px;outline:none;background:var(--cream);
+}
+.modal select, .modal input{
+    width:100%;padding:13px;border-radius:12px;border:1px solid var(--border);margin:8px 0;
+    font-size:15px;background:#fff;
+}
+.media-preview{
+    display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;
+}
+.media-preview img,.media-preview video{
+    width:120px;height:120px;object-fit:cover;border-radius:10px;border:1px solid var(--border);
+}
+
+/* 高级筛选区域 */
+.filter-bar{
+    background:#fff;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:16px;
+    border:1px solid var(--border);
+}
+.filter-row{
+    display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;
+    align-items:center;
+}
+.tag-multi-box{
+    display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;
+}
+.tag-checkbox{
+    padding:4px 10px;border-radius:8px;border:1px solid var(--border);cursor:pointer;font-size:13px;
+}
+.tag-checkbox.active{background:var(--peach);border-color:var(--pink);}
+.export-bar{
+    margin-bottom:14px;
+    display:flex;gap:10px;
+}
+
+/* AI对话页面样式 */
+.chat-wrap{
+    display:flex;
+    flex-direction:column;
+    height:calc(100vh - 180px);
+}
+.chat-list{
+    flex:1;
+    overflow-y:auto;
+    padding-bottom:12px;
+}
+.msg-user{
+    display:flex;justify-content:flex-end;margin:12px 0;
+}
+.msg-ai{
+    display:flex;justify-content:flex-start;margin:12px 0;
+}
+.msg-bubble{
+    max-width:86%;
+    padding:13px 18px;
+    border-radius:16px;
+    line-height:1.65;
+    font-size:15px;
+    white-space:pre-wrap;
+}
+.msg-user .msg-bubble{
+    background:var(--pink);
+    color:#5c332d;
+    border-bottom-right-radius:6px;
+}
+.msg-ai .msg-bubble{
+    background:#fff;
+    color:#443835;
+    border-bottom-left-radius:6px;
+    border:1px solid var(--border);
+}
+.chat-input-row{
+    display:flex;gap:8px;margin-top:14px;
+}
+.chat-input{
+    flex:1;padding:14px;border-radius:14px;border:1px solid var(--border);font-size:15px;outline:none;background:#fff;
+}
+.ai-set-box{
+    margin-bottom:14px;
+}
+
+.section{display:none;}
+.section.show{display:block;}
+
+/* 移动端适配 */
 .bottom-nav{display:none;}
 @media (max-width:768px){
-.wrapper{flex-direction:column;}
-.sidebar{display:none;}
-.bottom-nav{
-display:flex;overflow-x:auto;background:#fff;padding:10px 6px;gap:6px;
-position:sticky;bottom:0;scrollbar-width:none;
-}
-.bottom-nav::-webkit-scrollbar{display:none;}
-.bottom-nav .nav-btn{
-white-space:nowrap;padding:8px 12px;border-radius:99px;border:none;
-background:var(--card);color:var(--accent);font-size:13px;
-}
-.bottom-nav .nav-btn.active{background:var(--accent);color:#fff;}
-body{padding-bottom:70px;}
+    .sidebar{display:none;}
+    .bottom-nav{
+        display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;
+        overflow-x:auto;padding:8px;gap:4px;box-shadow:0 -2px 6px var(--shadow);
+    }
+    .bottom-nav .nav-btn{
+        white-space:nowrap;padding:9px 12px;border-radius:99px;border:none;background:var(--cream);
+        font-size:13px;cursor:pointer;
+    }
+    .bottom-nav .nav-btn.active{background:var(--peach);}
+    .main-wrap{height:auto;min-height:100vh;padding-bottom:70px;}
+    .chat-wrap{height:65vh;}
 }
 </style>
 </head>
 <body>
-<div class="top-datetime" id="timeBar"></div>
-<div class="wrapper">
-    <div class="sidebar">
-        <button class="nav-btn active" data-target="home">🏠首页</button>
-        <button class="nav-btn" data-target="fit">🥗减脂管理</button>
-        <button class="nav-btn" data-target="bill">💰家庭记账</button>
-        <button class="nav-btn" data-target="text">📜文案素材库</button>
-        <button class="nav-btn" data-target="photo">📸拍照笔记</button>
-        <button class="nav-btn" data-target="makeup">💄妆容分享</button>
-        <button class="nav-btn" data-target="kid">📖孩子作业区</button>
+<!-- =====================左侧竖导航【自由增删栏目在这里修改】===================== -->
+<div class="sidebar">
+    <div class="nav-title">🍑奶油工作台</div>
+    <button class="nav-btn active" data-target="home">🏠首页</button>
+    <button class="nav-btn" data-target="bill">💰家庭记账</button>
+    <button class="nav-btn" data-target="text">📜文案素材库</button>
+    <button class="nav-btn" data-target="photo">📸拍照笔记</button>
+    <button class="nav-btn" data-target="makeup">💄妆容分享</button>
+    <button class="nav-btn" data-target="archive">⭐归档收藏</button>
+    <button class="nav-btn" data-target="ai">🤖AI智能助手</button>
+    <!-- 新增导航直接复制一行：<button class="nav-btn" data-target="xxx">名称</button> -->
+</div>
+
+<div class="main-wrap">
+<div class="top-bar" id="timeBar"></div>
+<div class="content">
+    <div class="export-bar">
+        <button class="btn btn-light" onclick="exportData()">📤导出备份</button>
+        <button class="btn btn-light" onclick="triggerImport()">📥导入恢复</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(this)">
     </div>
-    <div class="main-content">
-        <div class="section show" id="home">
-            <div class="card">
-                <div class="card-title">💖 Pink自律多功能工作台</div>
-                <div class="card-content">减脂｜记账｜文案｜摄影｜美妆｜育儿记录
-好好生活，持续变优秀✨</div>
+
+    <!-- 高级筛选区域：日期、金额区间、多选标签 -->
+    <div class="filter-bar">
+        <div class="filter-row">
+            <input type="date" id="filterStart">
+            <input type="date" id="filterEnd">
+            <input placeholder="最低金额" style="width:110px" id="filterMinMoney">
+            <input placeholder="最高金额" style="width:110px" id="filterMaxMoney">
+            <button class="btn btn-primary" onclick="renderAllLists()">筛选</button>
+        </div>
+        <div>标签多选：<div class="tag-multi-box" id="tagMultiBox"></div></div>
+    </div>
+
+    <input class="search-box" placeholder="🔍当前赛道定向搜索..." id="searchInput">
+
+    <div class="section show" id="home">
+        <div class="card">
+            <div class="card-title">🍑多巴胺奶油工作台</div>
+            <div class="card-content">
+✅赛道定向搜索：进入对应分类仅检索当前赛道
+✅每条记录支持复制、归档收藏
+✅高级筛选：日期、金额区间、多选标签
+✅编辑支持：文字、语音录入、图片、视频上传
+✅AI页面：本地检索 + 联网大模型对话（填入API Key启用）
+所有数据存储本地浏览器，定期导出备份！
             </div>
         </div>
-        <div class="section" id="fit">
-            <input class="search-box" placeholder="🔍搜索减脂记录..." data-type="fit">
-            <div id="list-fit"></div>
+    </div>
+
+    <div class="section" id="bill">
+        <div class="card">
+            <div class="card-title">📊记账统计</div>
+            <div id="billStat">加载统计...</div>
         </div>
-        <div class="section" id="bill">
-            <input class="search-box" placeholder="🔍搜索收支记账..." data-type="bill">
-            <div id="list-bill"></div>
+        <div id="list-bill"></div>
+    </div>
+    <div class="section" id="text"><div id="list-text"></div></div>
+    <div class="section" id="photo"><div id="list-photo"></div></div>
+    <div class="section" id="makeup"><div id="list-makeup"></div></div>
+
+    <!-- 归档收藏页面 -->
+    <div class="section" id="archive">
+        <div class="card">
+            <div class="card-title">⭐归档收藏夹</div>
+            <div class="card-content">收藏的内容统一存放，支持复制、取消归档</div>
         </div>
-        <div class="section" id="text">
-            <input class="search-box" placeholder="🔍搜索文案素材..." data-type="text">
-            <div id="list-text"></div>
+        <div id="list-archive"></div>
+    </div>
+
+    <!-- AI联网对话页面 -->
+    <div class="section" id="ai">
+        <div class="card ai-set-box">
+            <div class="card-title">🤖AI联网助手设置</div>
+            <input placeholder="API Key" id="aiApiKey">
+            <input placeholder="接口地址(DeepSeek默认：https://api.deepseek.com/v1/chat/completions)" id="apiUrl" value="https://api.deepseek.com/v1/chat/completions">
+            <input placeholder="模型名称 deepseek-chat" id="aiModel" value="deepseek-chat">
+            <div class="btn-row">
+                <button class="btn btn-mint" onclick="clearAiChat()">清空对话</button>
+            </div>
         </div>
-        <div class="section" id="photo">
-            <input class="search-box" placeholder="🔍搜索摄影笔记..." data-type="photo">
-            <div id="list-photo"></div>
+        <div class="card">
+            <div class="card-title">💡使用说明</div>
+            <div class="card-content">
+无密钥 = 本地关键词检索所有记录；
+填入正确API Key，开启联网AI自由对话（写文案、策划、问答）
+            </div>
         </div>
-        <div class="section" id="makeup">
-            <input class="search-box" placeholder="🔍搜索美妆记录..." data-type="makeup">
-            <div id="list-makeup"></div>
-        </div>
-        <div class="section" id="kid">
-            <input class="search-box" placeholder="🔍搜索育儿记录..." data-type="kid">
-            <div id="list-kid"></div>
+        <div class="chat-wrap">
+            <div class="chat-list" id="chatList"></div>
+            <div class="chat-input-row">
+                <input class="chat-input" id="aiQuery" placeholder="输入提问...">
+                <button class="btn btn-primary" onclick="sendAiQuery()">发送</button>
+            </div>
         </div>
     </div>
 </div>
-<div class="bottom-nav">
-    <button class="nav-btn active" data-target="home">🏠首页</button>
-    <button class="nav-btn" data-target="fit">🥗减脂</button>
-    <button class="nav-btn" data-target="bill">💰记账</button>
-    <button class="nav-btn" data-target="text">📜文案</button>
-    <button class="nav-btn" data-target="photo">📸摄影</button>
-    <button class="nav-btn" data-target="makeup">💄美妆</button>
-    <button class="nav-btn" data-target="kid">📖育儿</button>
+
+<!-- 手机底部导航 -->
+<div class="bottom-nav"></div>
 </div>
+
+<!-- 悬浮新增按钮 -->
 <div class="add-btn-wrap">
 <button class="add-btn" id="openAddModal">+</button>
 </div>
+
+<!-- 编辑弹窗：文字 + 语音 + 图片 + 视频 -->
 <div class="modal-mask" id="modal">
 <div class="modal">
-<div class="modal-top">
-<span id="modalTitle">新建内容</span>
-<button class="modal-close" id="closeModal">×</button>
+    <div class="modal-top">
+        <span id="modalTitle">新建记录</span>
+        <button class="modal-close" id="closeModal">×</button>
+    </div>
+    <select id="recordType">
+        <option value="bill">💰记账</option>
+        <option value="text">📜文案素材</option>
+        <option value="photo">📸拍照笔记</option>
+        <option value="makeup">💄妆容分享</option>
+    </select>
+    <input placeholder="标签（多个逗号隔开）" id="recordTag">
+    <input type="date" id="recordDate">
+    <div class="btn-row">
+        <button class="btn btn-yellow" onclick="startVoiceInput()">🎤语音录入</button>
+        <label class="btn btn-light">🖼上传图片<input type="file" accept="image/*" multiple style="display:none" onchange="uploadMedia(this,'img')"></label>
+        <label class="btn btn-light">🎬上传视频<input type="file" accept="video/*" multiple style="display:none" onchange="uploadMedia(this,'video')"></label>
+    </div>
+    <textarea placeholder="输入内容" id="recordContent"></textarea>
+    <div class="media-preview" id="mediaPreview"></div>
+    <div class="btn-row">
+        <button class="btn btn-primary" id="submitSave">保存记录</button>
+    </div>
 </div>
-<select id="modalType">
-<option value="fit">🥗减脂管理</option>
-<option value="bill">💰家庭记账</option>
-<option value="text">📜文案素材库</option>
-<option value="photo">📸拍照笔记</option>
-<option value="makeup">💄妆容分享</option>
-<option value="kid">📖孩子作业区</option>
-</select>
-<textarea id="modalContent" placeholder="在此输入内容..."></textarea>
-<div style="display:flex;gap:12px;">
-<button class="btn btn-light" id="cancelSave">取消</button>
-<button class="btn btn-primary" id="submitSave">保存</button>
 </div>
-</div>
-</div>
+
 <script>
-const STORAGE_KEY = "pink_workbench_data";
+const STORAGE_KEY = "cream_workbench_data";
+const CHAT_STORAGE = "ai_chat_history";
+const ARCHIVE_KEY = "workbench_archive";
 let editId = null;
 let activeTab = "home";
+let allData = loadData();
+let chatHistory = loadChat();
+let archiveList = loadArchive();
+let tempMedia = []; // 当前编辑媒体缓存
+
+document.getElementById("recordDate").valueAsDate = new Date();
+
 function loadData(){
     const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : [];
 }
 function saveData(list){
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    allData = list;
 }
-let dataList = loadData();
+function loadChat(){
+    const c = localStorage.getItem(CHAT_STORAGE);
+    return c ? JSON.parse(c) : [];
+}
+function saveChat(){
+    localStorage.setItem(CHAT_STORAGE, JSON.stringify(chatHistory));
+}
+function loadArchive(){
+    const arch = localStorage.getItem(ARCHIVE_KEY);
+    return arch ? JSON.parse(arch) : [];
+}
+function saveArchive(){
+    localStorage.setItem(ARCHIVE_KEY, JSON.stringify(archiveList));
+}
+
+// 时间更新
 function updateTime(){
     const now = new Date();
     const weekArr=["周日","周一","周二","周三","周四","周五","周六"];
@@ -203,147 +454,301 @@ function updateTime(){
     const m = String(now.getMonth()+1).padStart(2,'0');
     const d = String(now.getDate()).padStart(2,'0');
     const w = weekArr[now.getDay()];
-    const h = String(now.getHours()).padStart(2,'0');
-    const mi = String(now.getMinutes()).padStart(2,'0');
-    const s = String(now.getSeconds()).padStart(2,'0');
-    document.getElementById("timeBar").innerText = `${y}年${m}月${d}日 ${w} ${h}:${mi}:${s}`;
+    document.getElementById("timeBar").innerText = `${y}年${m}月${d}日 ${w}`;
 }
 updateTime();
-setInterval(updateTime,1000);
-const allBtns = document.querySelectorAll(".nav-btn");
-const sections = document.querySelectorAll(".section");
-allBtns.forEach(btn=>{
+setInterval(updateTime,60000);
+
+// 导航绑定
+document.querySelectorAll(".nav-btn").forEach(btn=>{
     btn.onclick = ()=>{
         const target = btn.dataset.target;
         activeTab = target;
-        allBtns.forEach(b=>b.classList.remove("active"));
+        document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
         document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(b=>b.classList.add("active"));
-        sections.forEach(s=>s.classList.remove("show"));
+        document.querySelectorAll(".section").forEach(s=>s.classList.remove("show"));
         document.getElementById(target).classList.add("show");
         renderAllLists();
+        if(target === "ai") renderChat();
     }
 })
+
 function escapeHtml(str){
     return String(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
 }
-function renderList(type, keyword=""){
-    const wrap = document.getElementById("list-"+type);
-    let arr = dataList.filter(item=>item.type === type);
-    if(keyword){
-        arr = arr.filter(item=>item.content.includes(keyword));
-    }
-    arr.sort((a,b)=>b.time - a.time);
-    if(arr.length === 0){
-        wrap.innerHTML = `<div class="empty-tip">暂无记录，点击右下角 + 添加</div>`;
-        return;
-    }
-    let html = "";
-    arr.forEach(item=>{
-        const dateStr = new Date(item.time).toLocaleString();
-        const favIcon = item.fav ? `<span class="fav-mark">★</span>` : "";
-        html += `
-        <div class="card" data-id="${item.id}">
-            <div class="card-head">
-                <span class="card-title">${favIcon}记录</span>
-                <span class="card-time">${dateStr}</span>
-            </div>
-            <div class="card-content">${escapeHtml(item.content)}</div>
-            <div class="btn-row">
-                <button class="btn btn-light copyBtn" data-id="${item.id}">复制</button>
-                <button class="btn btn-light favBtn" data-id="${item.id}">${item.fav?"取消收藏":"收藏"}</button>
-                <button class="btn btn-light editBtn" data-id="${item.id}">编辑</button>
-                <button class="btn btn-danger delBtn" data-id="${item.id}">删除</button>
-            </div>
-        </div>
-        `
+
+// 高级筛选逻辑（金额区间+标签多选+赛道定向）
+function getFilteredData(){
+    const start = document.getElementById("filterStart").value;
+    const end = document.getElementById("filterEnd").value;
+    const minMoney = parseFloat(document.getElementById("filterMinMoney").value)||null;
+    const maxMoney = parseFloat(document.getElementById("filterMaxMoney").value)||null;
+    const search = document.getElementById("searchInput").value.toLowerCase();
+    const selectedTags = [...document.querySelectorAll(".tag-checkbox.active")].map(d=>d.dataset.tag);
+
+    return allData.filter(item=>{
+        let ok = true;
+        // 赛道定向筛选
+        if(["bill","text","photo","makeup"].includes(activeTab)){
+            if(item.type !== activeTab) ok = false;
+        }
+        if(start && item.date < start) ok=false;
+        if(end && item.date > end) ok=false;
+        // 金额筛选仅对记账生效
+        if(item.type === "bill"){
+            const numMatch = item.content.match(/(收入|支出)\s*[:：]?\s*([0-9.]+)/);
+            if(numMatch){
+                const num = Number(numMatch[2]);
+                if(minMoney!==null && num<minMoney) ok=false;
+                if(maxMoney!==null && num>maxMoney) ok=false;
+            }
+        }
+        // 多选标签
+        if(selectedTags.length>0 && !selectedTags.some(t=>item.tags.includes(t))) ok=false;
+        if(search && !item.content.toLowerCase().includes(search) && !item.tags.some(t=>t.toLowerCase().includes(search))) ok=false;
+        return ok;
     })
-    wrap.innerHTML = html;
+}
+
+// 渲染页面
+function renderAllLists(){
+    const filtered = getFilteredData();
+    const typeList = ["bill","text","photo","makeup"];
+    typeList.forEach(t=>document.getElementById(`list-${t}`).innerHTML="");
+    document.getElementById("list-archive").innerHTML = "";
+
+    // 渲染多选标签
+    const allTags = [...new Set(allData.flatMap(i=>i.tags))];
+    const tagBox = document.getElementById("tagMultiBox");
+    tagBox.innerHTML = "";
+    allTags.forEach(t=>{
+        const span = document.createElement("span");
+        span.className="tag-checkbox";
+        span.dataset.tag = t;
+        span.innerText = t;
+        span.onclick = ()=>span.classList.toggle("active");
+        tagBox.appendChild(span);
+    })
+
+    let incomeTotal=0,payTotal=0;
+    filtered.sort((a,b)=>new Date(b.time)-new Date(a.time));
+    filtered.forEach(item=>{
+        const container = document.getElementById(`list-${item.type}`);
+        if(!container) return;
+        if(item.type === "bill"){
+            const match = item.content.match(/(收入|支出)\s*[:：]?\s*([0-9.]+)/);
+            if(match){
+                const n = parseFloat(match[2]);
+                match[1]==="收入"?incomeTotal+=n:payTotal+=n;
+            }
+        }
+        const tagStr = item.tags.length ? `🏷️${item.tags.join(" ")}` : "";
+        container.innerHTML += buildCardHtml(item,tagStr);
+    })
+    archiveList.forEach(item=>document.getElementById("list-archive").innerHTML += buildArchiveHtml(item));
+    document.getElementById("billStat").innerHTML = `
+        <p>💰总收入：${incomeTotal.toFixed(2)} 元</p>
+        <p>💸总支出：${payTotal.toFixed(2)} 元</p>
+        <p>📌结余：${(incomeTotal-payTotal).toFixed(2)} 元</p>
+    `;
     bindCardEvent();
 }
-function renderAllLists(){
-    ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t));
+
+function buildCardHtml(item,tagStr){
+    return `
+    <div class="card" data-id="${item.id}">
+        <div class="card-head"><span class="card-title">${item.date} ${tagStr}</span></div>
+        <div class="card-content">${escapeHtml(item.content)}</div>
+        <div class="btn-row">
+            <button class="btn btn-light copyBtn">📋复制</button>
+            <button class="btn btn-mint archiveBtn">⭐归档</button>
+            <button class="btn btn-light editBtn">✏编辑</button>
+            <button class="btn btn-danger delBtn">🗑删除</button>
+        </div>
+    </div>`;
 }
+function buildArchiveHtml(item){
+    const tagStr = item.tags.length ? `🏷️${item.tags.join(" ")}` : "";
+    return `
+    <div class="card" data-id="${item.id}">
+        <div class="card-head"><span class="card-title">${item.date} ${tagStr}</span></div>
+        <div class="card-content">${escapeHtml(item.content)}</div>
+        <div class="btn-row">
+            <button class="btn btn-light copyBtn">📋复制</button>
+            <button class="btn btn-danger unArchiveBtn">❌取消归档</button>
+        </div>
+    </div>`;
+}
+
 function bindCardEvent(){
-    document.querySelectorAll(".copyBtn").forEach(btn=>{
-        btn.onclick = async ()=>{
-            const id = btn.dataset.id;
-            const item = dataList.find(d=>d.id===id);
-            await navigator.clipboard.writeText(item.content);
-            alert("复制成功");
-        }
+    document.querySelectorAll(".copyBtn").forEach(btn=>btn.onclick=async()=>{
+        const id = btn.closest(".card").dataset.id;
+        const data = allData.find(d=>d.id===id) || archiveList.find(d=>d.id===id);
+        await navigator.clipboard.writeText(data.content);alert("复制成功");
     })
-    document.querySelectorAll(".favBtn").forEach(btn=>{
-        btn.onclick = ()=>{
-            const id = btn.dataset.id;
-            const item = dataList.find(d=>d.id===id);
-            item.fav = !item.fav;
-            saveData(dataList);
-            renderAllLists();
-        }
+    document.querySelectorAll(".archiveBtn").forEach(btn=>btn.onclick=()=>{
+        const id = btn.closest(".card").dataset.id;
+        const item = allData.find(d=>d.id===id);
+        if(archiveList.find(x=>x.id===id)) return alert("已归档");
+        archiveList.push(item);saveArchive();alert("归档成功");
     })
-    document.querySelectorAll(".editBtn").forEach(btn=>{
-        btn.onclick = ()=>{
-            const id = btn.dataset.id;
-            const item = dataList.find(d=>d.id===id);
-            editId = id;
-            document.getElementById("modalTitle").innerText="编辑内容";
-            document.getElementById("modalType").value = item.type;
-            document.getElementById("modalContent").value = item.content;
-            document.getElementById("modal").classList.add("open");
-        }
+    document.querySelectorAll(".unArchiveBtn").forEach(btn=>btn.onclick=()=>{
+        const id = btn.closest(".card").dataset.id;
+        archiveList = archiveList.filter(x=>x.id!==id);saveArchive();renderAllLists();
     })
-    document.querySelectorAll(".delBtn").forEach(btn=>{
-        btn.onclick = ()=>{
-            if(!confirm("确定删除这条记录吗？"))return;
-            const id = btn.dataset.id;
-            dataList = dataList.filter(d=>d.id !== id);
-            saveData(dataList);
-            renderAllLists();
-        }
+    document.querySelectorAll(".editBtn").forEach(btn=>btn.onclick=()=>{
+        const id = btn.closest(".card").dataset.id;
+        const item = allData.find(d=>d.id===id);
+        editId=id;tempMedia=[];document.getElementById("mediaPreview").innerHTML="";
+        document.getElementById("recordType").value=item.type;
+        document.getElementById("recordTag").value=item.tags.join(",");
+        document.getElementById("recordDate").value=item.date;
+        document.getElementById("recordContent").value=item.content;
+        document.getElementById("modalTitle").innerText="编辑记录";openModal();
+    })
+    document.querySelectorAll(".delBtn").forEach(btn=>btn.onclick=()=>{
+        if(!confirm("确定删除？"))return;
+        const id = btn.closest(".card").dataset.id;
+        allData = allData.filter(d=>d.id!==id);
+        archiveList = archiveList.filter(x=>x.id!==id);
+        saveData(allData);saveArchive();renderAllLists();
     })
 }
+
+// 弹窗
 const modal = document.getElementById("modal");
 function openModal(){modal.classList.add("open");}
 function closeModal(){
-    modal.classList.remove("open");
-    editId = null;
-    document.getElementById("modalTitle").innerText="新建内容";
-    document.getElementById("modalContent").value = "";
-    document.getElementById("modalType").value = activeTab === "home" ? "text" : activeTab;
+    modal.classList.remove("open");editId=null;tempMedia=[];
+    document.getElementById("mediaPreview").innerHTML="";
+    document.getElementById("recordTag").value="";
+    document.getElementById("recordContent").value="";
+    document.getElementById("recordDate").valueAsDate=new Date();
+    document.getElementById("modalTitle").innerText="新建记录";
 }
-document.getElementById("openAddModal").onclick = openModal;
-document.getElementById("closeModal").onclick = closeModal;
-document.getElementById("cancelSave").onclick = closeModal;
+document.getElementById("openAddModal").onclick=openModal;
+document.getElementById("closeModal").onclick=closeModal;
+
+// 保存记录
 document.getElementById("submitSave").onclick = ()=>{
-    const type = document.getElementById("modalType").value;
-    const content = document.getElementById("modalContent").value.trim();
-    if(!content){alert("请输入内容！");return;}
+    const type = document.getElementById("recordType").value;
+    const tagText = document.getElementById("recordTag").value.trim();
+    const date = document.getElementById("recordDate").value;
+    const content = document.getElementById("recordContent").value.trim();
+    const tags = tagText.split(/[,，]/).map(s=>s.trim()).filter(s=>s);
+    if(!content){alert("内容不能为空");return;}
     if(editId){
-        const obj = dataList.find(d=>d.id === editId);
-        obj.type = type;
-        obj.content = content;
-        obj.time = Date.now();
+        const obj = allData.find(d=>d.id===editId);
+        obj.type=type;obj.tags=tags;obj.date=date;obj.content=content;
     }else{
-        const newItem = {
-            id: String(Date.now()),
-            type,
-            content,
-            fav: false,
-            time: Date.now()
-        }
-        dataList.unshift(newItem);
+        allData.push({id:Date.now().toString(),time:Date.now(),type,tags,date,content,media:[...tempMedia]});
     }
-    saveData(dataList);
-    renderAllLists();
-    closeModal();
+    saveData(allData);closeModal();renderAllLists();
 }
-document.querySelectorAll(".search-box").forEach(input=>{
-    input.oninput = ()=>{
-        const type = input.dataset.type;
-        renderList(type, input.value.trim());
+
+// 🎤语音录入
+let rec;
+function startVoiceInput(){
+    if(!window.webkitSpeechRecognition && !window.SpeechRecognition) return alert("浏览器不支持语音识别");
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    rec = new SpeechRecognition();rec.lang="zh-CN";rec.continuous=false;
+    rec.onresult=(e)=>{
+        const text = e.results[0][0].transcript;
+        document.getElementById("recordContent").value += text;
+    };
+    rec.start();alert("开始说话！");
+}
+
+// 🖼图片/视频上传
+function uploadMedia(input,type){
+    const files = input.files;
+    const previewBox = document.getElementById("mediaPreview");
+    for(let f of files){
+        const reader = new FileReader();
+        reader.onload = e=>{
+            tempMedia.push({src:e.target.result,type});
+            if(type==="img") previewBox.innerHTML += `<img src="${e.target.result}">`;
+            else previewBox.innerHTML += `<video src="${e.target.result}" controls></video>`;
+        }
+        reader.readAsDataURL(f);
     }
-})
-renderAllLists();
+}
+
+// 导入导出
+function exportData(){
+    const exp = {records:allData,archive:archiveList};
+    const blob = new Blob([JSON.stringify(exp,null,2)],{type:"application/json"});
+    const a = document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download=`奶油工作台备份.json`;a.click();
+}
+function triggerImport(){document.getElementById("importFile").click();}
+function importData(input){
+    const fr = new FileReader();
+    fr.onload=e=>{
+        try{
+            const d = JSON.parse(e.target.result);
+            if(d.records) allData=d.records;
+            if(d.archive) archiveList=d.archive;
+            saveData(allData);saveArchive();renderAllLists();alert("导入成功");
+        }catch{alert("文件格式错误")}
+    }
+    fr.readAsText(input.files[0]);
+}
+
+document.getElementById("searchInput").oninput = renderAllLists;
+
+// =========AI联网对话模块=========
+function renderChat(){
+    const listDom = document.getElementById("chatList");
+    listDom.innerHTML = "";
+    chatHistory.forEach(msg=>{
+        if(msg.role==="user") listDom.innerHTML += `<div class="msg-user"><div class="msg-bubble">${escapeHtml(msg.text)}</div></div>`;
+        else listDom.innerHTML += `<div class="msg-ai"><div class="msg-bubble">${escapeHtml(msg.text)}</div></div>`;
+    })
+    listDom.scrollTop = listDom.scrollHeight;
+}
+function clearAiChat(){chatHistory=[];saveChat();renderChat();}
+
+async function sendAiQuery(){
+    const input = document.getElementById("aiQuery");
+    const text = input.value.trim();if(!text)return;
+    const apiKey = document.getElementById("aiApiKey").value.trim();
+    const apiUrl = document.getElementById("apiUrl").value.trim();
+    const model = document.getElementById("aiModel").value.trim();
+    chatHistory.push({role:"user",text});input.value="";renderChat();
+
+    // 无密钥：本地检索模式
+    if(!apiKey){
+        const q = text.toLowerCase();
+        const match = allData.filter(item=>item.content.toLowerCase().includes(q)||item.tags.some(t=>t.toLowerCase().includes(q)));
+        let res;
+        if(match.length===0) res="未找到匹配记录，可以填入API Key开启联网AI问答";
+        else{
+            res=`找到${match.length}条记录：\n`;
+            match.forEach((r,i)=>res+=`${i+1}.【${r.date}】${r.content}\n`);
+        }
+        chatHistory.push({role:"ai",text:res});saveChat();renderChat();
+        return;
+    }
+    // 联网大模型
+    try{
+        const msgList = chatHistory.map(m=>({role:m.role==="user"?"user":"assistant",content:m.text}));
+        const resp = await fetch(apiUrl,{
+            method:"POST",
+            headers:{"Authorization":`Bearer ${apiKey}`,"Content-Type":"application/json"},
+            body:JSON.stringify({model,messages:msgList,temperature:0.7})
+        })
+        const json = await resp.json();
+        const aiText = json.choices?.[0]?.message?.content || "接口返回异常";
+        chatHistory.push({role:"ai",text:aiText});
+    }catch(err){
+        chatHistory.push({role:"ai",text:"联网失败，请检查API密钥和接口地址"});
+    }
+    saveChat();renderChat();
+}
+document.getElementById("aiQuery").onkeydown=e=>{if(e.key==="Enter") sendAiQuery();}
+
+renderAllLists();renderChat();
 </script>
 </body>
 </html>

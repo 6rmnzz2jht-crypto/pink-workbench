@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN" translate="no">
+<html lang="en" translate="no">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="google" content="notranslate">
-<meta http-equiv="Content-Language" content="zh-CN">
+<meta http-equiv="Content-Language" content="en">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<title>Pink 自律工作台</title>
+<meta name="apple-mobile-web-app-title" content="Pink Workbench">
+<title>Pink Workbench</title>
 <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBJTksg55So56CB86WWveW6lw==IiwKICAic2hvcnRfbmFtZSI6IuW6lw==IiwKICAic3RhcnRfdXJsIjoiLiIsCiAgImRpc3BsYXkiOiJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6IiNGRkU2RUYiLAogICJ0aGVtZV9jb2xvciI6IiNGOEI4RDAiLAogICJpY29ucyI6WwogICAgewogICAgICAic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiUzRSUzQ3JlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0Y4QjhEMCIvJTNFJTNDdGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiJTNF8aeW5CUzQyUlMjtlM0N0ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6IjE5MngxOTIiLAogICAgICAidHlwZSI6ImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -718,6 +719,22 @@ if("serviceWorker" in navigator){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
 
+// ===== 彻底阻止 Safari 翻译：给所有元素加 translate="no" =====
+function applyNoTranslate(){
+  document.querySelectorAll("*").forEach(el=>{
+    if(!el.hasAttribute("translate")) el.setAttribute("translate","no");
+  });
+  document.documentElement.setAttribute("translate","no");
+  document.body.setAttribute("translate","no");
+}
+applyNoTranslate();
+// DOMContentLoaded 之后再执行一次，确保动态插入的内容也被标记
+document.addEventListener("DOMContentLoaded", applyNoTranslate);
+// 监听后续动态渲染
+const observer = new MutationObserver(()=>{ applyNoTranslate(); });
+observer.observe(document.body, {childList:true, subtree:true});
+
+// 初始化渲染
 renderAllLists();
 renderStats();
 </script>

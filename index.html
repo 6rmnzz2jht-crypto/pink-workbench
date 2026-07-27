@@ -1,742 +1,349 @@
 <!DOCTYPE html>
-<html lang="zh-CN" translate="no">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="google" content="notranslate">
-<meta http-equiv="Content-Language" content="zh-CN">
-<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<meta name="apple-mobile-web-app-title" content="Pink ×ÔÂÉ¹¤×÷Ì¨">
-<title>Pink ×ÔÂÉ¹¤×÷Ì¨</title>
-<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBJTksg55So56CB86WWveW6lw==IiwKICAic2hvcnRfbmFtZSI6IuW6lw==IiwKICAic3RhcnRfdXJsIjoiLiIsCiAgImRpc3BsYXkiOiJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6IiNGRkU2RUYiLAogICJ0aGVtZV9jb2xvciI6IiNGOEI4RDAiLAogICJpY29ucyI6WwogICAgewogICAgICAic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiUzRSUzQ3JlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0Y4QjhEMCIvJTNFJTNDdGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiJTNF8aeW5CUzQyUlMjtlM0N0ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6IjE5MngxOTIiLAogICAgICAidHlwZSI6ImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#F8B8D0">
+<title>ğŸ  Pinkè‡ªå¾‹å·¥ä½œå°</title>
 <style>
 :root{
 --main:#F8B8D0;
 --sub:#FFE6EF;
 --card:#FFF5F9;
---accent:#E888B0;
---accent-deep:#D96BA0;
+--accent:#E8689C;
 --text:#333333;
---text-light:#666666;
---light:#ffffff;
---shadow:0 2px 12px rgba(232,136,176,0.12);
---shadow-hover:0 4px 18px rgba(232,136,176,0.22);
---radius:16px;
---radius-sm:10px;
 }
-*{margin:0;padding:0;box-sizing:border-box;
-font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Heiti SC",system-ui,-apple-system,sans-serif;
--webkit-font-smoothing:antialiased;
-}
-body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;line-height:1.6;}
-
-/* ===== Í¼±êÏµÍ³£¨CSS»æÖÆ£¬²»ÒÀÀµemoji×ÖÌå£©===== */
-.ic{display:inline-flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;
-margin-right:4px;vertical-align:-0.15em;flex-shrink:0;}
-
-/* ¶¥²¿Ê±¼äÀ¸ */
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
+body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
 .top-datetime{
-background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
-color:#fff;text-align:center;
-padding:11px 8px;font-size:14px;font-weight:500;
+background:var(--main);
+color:#fff;
+text-align:center;
+padding:12px 8px;
+font-size:15px;
+font-weight:500;
 position:sticky;top:0;z-index:100;
-box-shadow:0 2px 8px rgba(232,136,176,0.3);
-letter-spacing:0.5px;
+box-shadow:0 2px 6px #00000018;
 }
 .wrapper{display:flex;flex:1;}
-
-/* ²à±ßµ¼º½ */
 .sidebar{
-width:140px;background:#fff;padding:18px 10px;
-display:flex;flex-direction:column;gap:6px;
-position:sticky;top:44px;height:calc(100vh - 44px);overflow-y:auto;
-box-shadow:2px 0 12px rgba(232,136,176,0.08);
+width:130px;background:#fff;padding:16px 8px;
+display:flex;flex-direction:column;gap:8px;
 }
 .sidebar .nav-btn{
-width:100%;white-space:nowrap;padding:11px 10px;border-radius:var(--radius-sm);border:none;
-background:var(--card);color:var(--accent-deep);font-size:13px;text-align:left;
-cursor:pointer;transition:all 0.2s;font-weight:500;
-display:flex;align-items:center;gap:8px;
+width:100%;white-space:nowrap;padding:11px 8px;border-radius:12px;border:none;
+background:var(--card);color:var(--accent);font-size:13px;text-align:left;
 }
-.sidebar .nav-btn:hover{background:var(--sub);transform:translateX(2px);}
-.sidebar .nav-btn.active{
-background:linear-gradient(135deg,#E888B0 0%,#D96BA0 100%);
-color:#fff;box-shadow:0 3px 10px rgba(232,136,176,0.4);
+.sidebar .nav-btn.active{background:var(--accent);color:#fff;}
+.main-content{
+flex:1;padding:14px;overflow-y:auto;max-width:680px;
 }
-.sidebar .nav-btn .ic{width:16px;height:16px;fill:currentColor;}
-
-.main-content{flex:1;padding:16px;overflow-y:auto;max-width:720px;margin:0 auto;width:100%;}
-
 .search-box{
-width:100%;padding:11px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--main);
-background:#fff;margin-bottom:14px;font-size:14px;outline:none;
-transition:border 0.2s,box-shadow 0.2s;
+width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--main);
+background:#fff;margin-bottom:16px;font-size:15px;outline:none;
 }
-.search-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,136,176,0.15);}
-
 .card{
-background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;
-box-shadow:var(--shadow);transition:box-shadow 0.2s;
+background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;
+box-shadow:0 1px 6px #0000000c;
 }
-.card:hover{box-shadow:var(--shadow-hover);}
-.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.card-title{font-weight:600;color:var(--accent-deep);font-size:15px;display:flex;align-items:center;}
-.card-time{font-size:12px;color:#999;}
-.card-content{line-height:1.8;font-size:14px;margin:10px 0;white-space:pre-wrap;color:var(--text);}
+.card-head{
+display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+}
+.card-title{font-weight:600;color:var(--accent);font-size:16px;}
+.card-time{font-size:12px;color:#888;}
+.card-content{line-height:1.7;font-size:15px;margin:10px 0;white-space:pre-wrap;}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
 .btn{
-padding:7px 12px;border-radius:8px;border:none;font-size:13px;cursor:pointer;
-transition:transform 0.15s,opacity 0.15s;
+padding:7px 11px;border-radius:9px;border:none;font-size:13px;cursor:pointer;
 }
-.btn:hover{transform:translateY(-1px);}
-.btn:active{transform:translateY(0);}
-.btn-primary{background:linear-gradient(135deg,#E888B0,#D96BA0);color:#fff;}
-.btn-light{background:var(--sub);color:var(--accent-deep);}
-.btn-danger{background:#ffe0e0;color:#c44;}
-
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-light{background:var(--sub);color:var(--accent);}
+.btn-danger{background:#ffdddd;color:#c44444;}
 .add-btn-wrap{position:fixed;right:22px;bottom:22px;z-index:98;}
 .add-btn{
-width:56px;height:56px;border-radius:50%;border:none;
-background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
-color:#fff;box-shadow:0 6px 18px rgba(232,136,176,0.4);
-cursor:pointer;transition:transform 0.2s;font-size:32px;font-weight:300;line-height:1;
+width:58px;height:58px;border-radius:50%;border:none;
+background:var(--accent);color:#fff;font-size:30px;box-shadow:0 4px 12px #00000022;
 }
-.add-btn:hover{transform:scale(1.06);}
-.add-btn:active{transform:scale(0.96);}
-
 .section{display:none;}
-.section.show{display:block;animation:fadeIn 0.3s;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.fav-mark{color:#ffc107;font-weight:700;}
-
+.section.show{display:block;}
+.fav-mark{color:#ffbc2c;}
 .modal-mask{
-position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;
-align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px);
+position:fixed;inset:0;background:#00000055;z-index:200;display:none;
+align-items:center;justify-content:center;padding:16px;
 }
-.modal-mask.open{display:flex;animation:fadeIn 0.2s;}
+.modal-mask.open{display:flex;}
 .modal{
-width:100%;max-width:520px;background:#fff;border-radius:20px;padding:22px;
-box-shadow:0 20px 60px rgba(0,0,0,0.2);
+width:100%;max-width:540px;background:#fff;border-radius:20px;padding:22px;
 }
-.modal textarea, .modal input{
-width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);
-margin:6px 0 12px;font-size:14px;outline:none;font-family:inherit;
+.modal textarea{
+width:100%;min-height:130px;padding:12px;border-radius:12px;border:1px solid var(--main);
+margin:12px 0;font-size:15px;outline:none;
 }
-.modal textarea{min-height:120px;resize:vertical;}
-.modal textarea:focus, .modal input:focus{border-color:var(--accent);}
-.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.modal-top span{font-weight:600;color:var(--accent-deep);font-size:16px;}
-.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#999;line-height:1;}
-.modal-close:hover{color:#333;}
-.empty-tip{text-align:center;padding:50px 0;color:#bbb;font-size:14px;}
-
-/* ¸öÈË×ÊÁÏºá·ù */
-.profile-banner{
-background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 50%,#D96BA0 100%);
-border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;
-color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
+.modal-top{
+display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
 }
-.profile-banner::before{content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,0.12);border-radius:50%;}
-.profile-banner::after{content:"";position:absolute;bottom:-40px;left:-20px;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;}
-.profile-row{display:flex;align-items:center;gap:16px;position:relative;z-index:1;}
-.profile-avatar{
-width:64px;height:64px;border-radius:50%;background:#fff;
-display:flex;align-items:center;justify-content:center;font-size:34px;
-box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;cursor:pointer;color:var(--accent-deep);
-font-weight:600;
-}
-.profile-info{flex:1;min-width:0;}
-.profile-name{font-size:19px;font-weight:600;margin-bottom:4px;}
-.profile-sig{font-size:13px;opacity:0.92;}
-.profile-edit{background:rgba(255,255,255,0.25);border:none;color:#fff;padding:6px 12px;
-border-radius:99px;font-size:12px;cursor:pointer;flex-shrink:0;font-family:inherit;}
-.profile-edit:hover{background:rgba(255,255,255,0.4);}
-
-/* Í³¼Æ¿´°å */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
-.stat-card{background:#fff;border-radius:var(--radius);padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
-.stat-num{font-size:22px;font-weight:700;color:var(--accent-deep);line-height:1.2;}
-.stat-label{font-size:11px;color:var(--text-light);margin-top:4px;}
-.stat-recent{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
-.stat-recent-title{font-size:13px;color:var(--text-light);margin-bottom:8px;}
-.stat-recent-list{display:flex;flex-wrap:wrap;gap:6px;}
-.stat-tag{background:var(--card);color:var(--accent-deep);padding:4px 10px;border-radius:99px;font-size:12px;}
-
-/* ´ò¿¨ÈÕÀú */
-.calendar-wrap{background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow);}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.calendar-head .month{font-weight:600;color:var(--accent-deep);font-size:15px;}
-.cal-nav{background:var(--card);border:none;color:var(--accent-deep);width:28px;height:28px;
-border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;}
-.cal-nav:hover{background:var(--sub);}
-.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
-.cal-week{text-align:center;font-size:11px;color:#bbb;padding:4px 0;}
-.cal-day{
-aspect-ratio:1;display:flex;align-items:center;justify-content:center;
-font-size:13px;border-radius:8px;cursor:pointer;position:relative;
-background:#fafafa;color:var(--text);transition:background 0.15s;
-}
-.cal-day:hover{background:var(--sub);}
-.cal-day.empty{background:transparent;cursor:default;}
-.cal-day.today{font-weight:700;color:var(--accent-deep);border:1.5px solid var(--accent);}
-.cal-day.checked{background:linear-gradient(135deg,#F8B8D0,#E888B0);color:#fff;font-weight:600;}
-.cal-day.checked::after{content:"?";position:absolute;bottom:1px;right:3px;font-size:9px;}
-.cal-legend{display:flex;gap:14px;margin-top:12px;font-size:12px;color:var(--text-light);justify-content:center;}
-.cal-legend span{display:flex;align-items:center;gap:4px;}
-.cal-dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
-.cal-streak{
-background:linear-gradient(135deg,#FFF5F9,#FFE6EF);border-radius:12px;
-padding:12px 16px;margin-top:12px;text-align:center;color:var(--accent-deep);font-size:13px;
-}
-.cal-streak b{font-size:18px;color:var(--accent-deep);}
-
-/* ĞÄÇé */
-.mood-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;}
-.mood-btn{
-width:42px;height:42px;border-radius:50%;border:2px solid transparent;
-background:var(--card);font-size:22px;cursor:pointer;transition:all 0.2s;
-font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
-}
-.mood-btn:hover{transform:scale(1.1);}
-.mood-btn.selected{border-color:var(--accent);background:#fff;transform:scale(1.1);}
-.mood-item{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);}
-.mood-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;}
-.mood-emoji{
-font-size:24px;
-font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
-}
-.mood-date{font-size:12px;color:#999;}
-.mood-text{font-size:14px;line-height:1.7;color:var(--text);white-space:pre-wrap;}
-.del-btn-small{
-margin-left:auto;background:#ffe0e0;color:#c44;border:none;
-padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;
-}
-
+.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#666;}
+.empty-tip{text-align:center;padding:50px 0;color:#888;}
 .bottom-nav{display:none;}
 @media (max-width:768px){
 .wrapper{flex-direction:column;}
 .sidebar{display:none;}
 .bottom-nav{
 display:flex;overflow-x:auto;background:#fff;padding:10px 6px;gap:6px;
-position:sticky;bottom:0;scrollbar-width:none;z-index:99;
-box-shadow:0 -2px 12px rgba(232,136,176,0.1);
+position:sticky;bottom:0;scrollbar-width:none;
 }
 .bottom-nav::-webkit-scrollbar{display:none;}
 .bottom-nav .nav-btn{
-white-space:nowrap;padding:8px 14px;border-radius:99px;border:none;
-background:var(--card);color:var(--accent-deep);font-size:13px;cursor:pointer;
-font-family:inherit;
+white-space:nowrap;padding:8px 12px;border-radius:99px;border:none;
+background:var(--card);color:var(--accent);font-size:13px;
 }
-.bottom-nav .nav-btn.active{background:linear-gradient(135deg,#E888B0,#D96BA0);color:#fff;}
+.bottom-nav .nav-btn.active{background:var(--accent);color:#fff;}
 body{padding-bottom:70px;}
-.stats-grid{grid-template-columns:repeat(2,1fr);}
-.main-content{padding:12px;}
 }
 </style>
 </head>
-<body translate="no" class="notranslate">
-<!-- SVGÍ¼±ê¿â£¨inline£¬²»ÒÀÀµÍâ²¿×ÊÔ´£© -->
-<svg width="0" height="0" style="position:absolute;">
-<defs>
-<symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3l9-8z"/></symbol>
-<symbol id="i-face" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><path d="M8 14c1 1.5 2.5 2.5 4 2.5s3-1 4-2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-9 6-14 14-14 0 8-5 14-14 14zM5 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-<symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 12h4M3 9h14" stroke="currentColor" stroke-width="2"/></symbol>
-<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z M15 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-<symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h4v13H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-<symbol id="i-cosmetics" viewBox="0 0 24 24"><path d="M9 4h6v3H9z M8 7h8l-1 13H9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-<symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h6a3 3 0 013 3v14a2 2 0 00-2-2H5z M19 4h-6a3 3 0 00-3 3v14a2 2 0 012-2h7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9.5C1.5 7 4 4 7 4c2 0 3.5 1.5 5 3 1.5-1.5 3-3 5-3 3 0 5.5 3 4 7.5C19 16.5 12 21 12 21z" fill="currentColor"/></symbol>
-<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-<symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4l11-11-4-4L4 16z M14 5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12l9-9h9v9l-9 9z M16 7a1.5 1.5 0 100 0.001z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-</defs>
-</svg>
-
+<body>
 <div class="top-datetime" id="timeBar"></div>
-
 <div class="wrapper">
-    <div class="sidebar" id="sidebar">
-        <button class="nav-btn active" data-target="home"><svg class="ic"><use href="#i-home"/></svg>Ê×Ò³</button>
-        <button class="nav-btn" data-target="mood"><svg class="ic"><use href="#i-face"/></svg>ĞÄÇéÈÕ¼Ç</button>
-        <button class="nav-btn" data-target="calendar"><svg class="ic"><use href="#i-cal"/></svg>´ò¿¨ÈÕÀú</button>
-        <button class="nav-btn" data-target="fit"><svg class="ic"><use href="#i-leaf"/></svg>¼õÖ¬¹ÜÀí</button>
-        <button class="nav-btn" data-target="bill"><svg class="ic"><use href="#i-wallet"/></svg>¼ÒÍ¥¼ÇÕË</button>
-        <button class="nav-btn" data-target="text"><svg class="ic"><use href="#i-doc"/></svg>ÎÄ°¸ËØ²Ä</button>
-        <button class="nav-btn" data-target="photo"><svg class="ic"><use href="#i-camera"/></svg>ÅÄÕÕ±Ê¼Ç</button>
-        <button class="nav-btn" data-target="makeup"><svg class="ic"><use href="#i-cosmetics"/></svg>×±Èİ·ÖÏí</button>
-        <button class="nav-btn" data-target="kid"><svg class="ic"><use href="#i-book"/></svg>º¢×Ó×÷Òµ</button>
+    <div class="sidebar">
+        <button class="nav-btn active" data-target="home">ğŸ é¦–é¡µ</button>
+        <button class="nav-btn" data-target="fit">ğŸ¥—å‡è„‚ç®¡ç†</button>
+        <button class="nav-btn" data-target="bill">ğŸ’°å®¶åº­è®°è´¦</button>
+        <button class="nav-btn" data-target="text">ğŸ“œæ–‡æ¡ˆç´ æåº“</button>
+        <button class="nav-btn" data-target="photo">ğŸ“¸æ‹ç…§ç¬”è®°</button>
+        <button class="nav-btn" data-target="makeup">ğŸ’„å¦†å®¹åˆ†äº«</button>
+        <button class="nav-btn" data-target="kid">ğŸ“–å­©å­ä½œä¸šåŒº</button>
     </div>
-
     <div class="main-content">
         <div class="section show" id="home">
-            <div class="profile-banner">
-                <div class="profile-row">
-                    <div class="profile-avatar" id="profileAvatar" title="µã»÷»»Í·Ïñ">P</div>
-                    <div class="profile-info">
-                        <div class="profile-name" id="profileName">Pink Ğ¡½ã½ã</div>
-                        <div class="profile-sig" id="profileSig">ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®</div>
-                    </div>
-                    <button class="profile-edit" id="editProfile">±à¼­×ÊÁÏ</button>
-                </div>
-            </div>
-
-            <div class="stats-grid" id="statsGrid">
-                <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">×Ü¼ÇÂ¼</div></div>
-                <div class="stat-card"><div class="stat-num" id="statFav">0</div><div class="stat-label">ÊÕ²Ø</div></div>
-                <div class="stat-card"><div class="stat-num" id="statChecked">0</div><div class="stat-label">´ò¿¨Ìì</div></div>
-                <div class="stat-card"><div class="stat-num" id="statMood">0</div><div class="stat-label">ĞÄÇéÌõ</div></div>
-            </div>
-            <div class="stat-recent">
-                <div class="stat-recent-title">¸÷Ä£¿é¼ÇÂ¼Êı</div>
-                <div class="stat-recent-list" id="statModules"></div>
-            </div>
-
             <div class="card">
-                <div class="card-title"><svg class="ic"><use href="#i-heart"/></svg>Pink ×ÔÂÉ¶à¹¦ÄÜ¹¤×÷Ì¨</div>
-                <div class="card-content">
-¼õÖ¬£ü¼ÇÕË£üÎÄ°¸£üÉãÓ°£ü×±Èİ£üÇ××ÓÑ§Ï°£üĞÄÇéÈÕ¼Ç£ü´ò¿¨ÈÕÀú<br><br>
-Ã¿Ìì½ø²½Ò»µãµã£¬Óö¼û¸üºÃµÄ×Ô¼º
-                </div>
+                <div class="card-title">ğŸ’– Pinkè‡ªå¾‹å¤šåŠŸèƒ½å·¥ä½œå°</div>
+                <div class="card-content">å‡è„‚ï½œè®°è´¦ï½œæ–‡æ¡ˆï½œæ‘„å½±ï½œç¾å¦†ï½œè‚²å„¿è®°å½•
+å¥½å¥½ç”Ÿæ´»ï¼ŒæŒç»­å˜ä¼˜ç§€âœ¨</div>
             </div>
         </div>
-
-        <div class="section" id="mood">
-            <div class="card">
-                <div class="card-title">½ñÈÕĞÄÇé</div>
-                <div class="card-content">Ñ¡Ò»¸ö±íÇé£¬ÔÙĞ´Ò»¾ä»°</div>
-                <div class="mood-row" id="moodPicker">
-                    <button class="mood-btn" data-mood="¿ªĞÄ">¿ªĞÄ</button>
-                    <button class="mood-btn" data-mood="ĞË·Ü">ĞË·Ü</button>
-                    <button class="mood-btn" data-mood="ĞÒ¸£">ĞÒ¸£</button>
-                    <button class="mood-btn" data-mood="Æ½¾²">Æ½¾²</button>
-                    <button class="mood-btn" data-mood="Ò»°ã">Ò»°ã</button>
-                    <button class="mood-btn" data-mood="Æ£¾ë">Æ£¾ë</button>
-                    <button class="mood-btn" data-mood="½¹ÂÇ">½¹ÂÇ</button>
-                    <button class="mood-btn" data-mood="ÄÑ¹ı">ÄÑ¹ı</button>
-                    <button class="mood-btn" data-mood="ÉúÆø">ÉúÆø</button>
-                    <button class="mood-btn" data-mood="²»ÊÊ">²»ÊÊ</button>
-                </div>
-                <textarea id="moodText" placeholder="½ñÌì·¢ÉúÁËÊ²Ã´£¿Ğ´Ò»¾ä»°¼ÇÂ¼°É¡«"></textarea>
-                <div class="btn-row">
-                    <button class="btn btn-primary" id="saveMood">±£´æ½ñÈÕĞÄÇé</button>
-                </div>
-            </div>
-            <div id="moodList"></div>
-        </div>
-
-        <div class="section" id="calendar">
-            <div class="calendar-wrap">
-                <div class="calendar-head">
-                    <button class="cal-nav" id="calPrev">?</button>
-                    <span class="month" id="calMonth">2026Äê7ÔÂ</span>
-                    <button class="cal-nav" id="calNext">?</button>
-                </div>
-                <div class="calendar-grid" id="calGrid"></div>
-                <div class="cal-legend">
-                    <span><span class="cal-dot" style="background:linear-gradient(135deg,#F8B8D0,#E888B0);"></span>ÒÑ´ò¿¨</span>
-                    <span><span class="cal-dot" style="background:#fafafa;border:1px solid #eee;"></span>Î´´ò¿¨</span>
-                    <span><span class="cal-dot" style="background:#fff;border:1.5px solid var(--accent);"></span>½ñÌì</span>
-                </div>
-                <div class="cal-streak" id="calStreak">Á¬Ğø´ò¿¨ <b>0</b> Ìì ¡¤ ÀÛ¼Æ <b>0</b> Ìì</div>
-            </div>
-            <div class="card">
-                <div class="card-title">½ñÈÕ´ò¿¨</div>
-                <div class="card-content" id="todayCheckStatus">½ñÈÕ»¹Î´´ò¿¨£¬µã»÷ÏÂ·½°´Å¥¿ªÊ¼°É¡«</div>
-                <div class="btn-row">
-                    <button class="btn btn-primary" id="checkToday">Íê³É½ñÈÕ´ò¿¨</button>
-                </div>
-            </div>
-        </div>
-
         <div class="section" id="fit">
-            <input class="search-box" placeholder="ËÑË÷¼õÖ¬Ïà¹ØÄÚÈİ..." data-type="fit">
+            <input class="search-box" placeholder="ğŸ”æœç´¢å‡è„‚è®°å½•..." data-type="fit">
             <div id="list-fit"></div>
         </div>
         <div class="section" id="bill">
-            <input class="search-box" placeholder="ËÑË÷¼ÇÕËÊÕÖ§ÄÚÈİ..." data-type="bill">
+            <input class="search-box" placeholder="ğŸ”æœç´¢æ”¶æ”¯è®°è´¦..." data-type="bill">
             <div id="list-bill"></div>
         </div>
         <div class="section" id="text">
-            <input class="search-box" placeholder="ËÑË÷ÎÄ°¸ËØ²Ä..." data-type="text">
+            <input class="search-box" placeholder="ğŸ”æœç´¢æ–‡æ¡ˆç´ æ..." data-type="text">
             <div id="list-text"></div>
         </div>
         <div class="section" id="photo">
-            <input class="search-box" placeholder="ËÑË÷ÉãÓ°±Ê¼Ç..." data-type="photo">
+            <input class="search-box" placeholder="ğŸ”æœç´¢æ‘„å½±ç¬”è®°..." data-type="photo">
             <div id="list-photo"></div>
         </div>
         <div class="section" id="makeup">
-            <input class="search-box" placeholder="ËÑË÷×±Èİ·ÖÏí..." data-type="makeup">
+            <input class="search-box" placeholder="ğŸ”æœç´¢ç¾å¦†è®°å½•..." data-type="makeup">
             <div id="list-makeup"></div>
         </div>
         <div class="section" id="kid">
-            <input class="search-box" placeholder="ËÑË÷º¢×ÓÑ§Ï°¼ÇÂ¼..." data-type="kid">
+            <input class="search-box" placeholder="ğŸ”æœç´¢è‚²å„¿è®°å½•..." data-type="kid">
             <div id="list-kid"></div>
         </div>
     </div>
 </div>
-
 <div class="bottom-nav">
-    <button class="nav-btn active" data-target="home">Ê×Ò³</button>
-    <button class="nav-btn" data-target="mood">ĞÄÇé</button>
-    <button class="nav-btn" data-target="calendar">´ò¿¨</button>
-    <button class="nav-btn" data-target="fit">¼õÖ¬</button>
-    <button class="nav-btn" data-target="bill">¼ÇÕË</button>
-    <button class="nav-btn" data-target="text">ÎÄ°¸</button>
-    <button class="nav-btn" data-target="photo">ÉãÓ°</button>
-    <button class="nav-btn" data-target="makeup">×±Èİ</button>
-    <button class="nav-btn" data-target="kid">×÷Òµ</button>
+    <button class="nav-btn active" data-target="home">ğŸ é¦–é¡µ</button>
+    <button class="nav-btn" data-target="fit">ğŸ¥—å‡è„‚</button>
+    <button class="nav-btn" data-target="bill">ğŸ’°è®°è´¦</button>
+    <button class="nav-btn" data-target="text">ğŸ“œæ–‡æ¡ˆ</button>
+    <button class="nav-btn" data-target="photo">ğŸ“¸æ‘„å½±</button>
+    <button class="nav-btn" data-target="makeup">ğŸ’„ç¾å¦†</button>
+    <button class="nav-btn" data-target="kid">ğŸ“–è‚²å„¿</button>
 </div>
-
-<div class="add-btn-wrap"><button class="add-btn" id="openAddModal">+</button></div>
-
+<div class="add-btn-wrap">
+<button class="add-btn" id="openAddModal">+</button>
+</div>
 <div class="modal-mask" id="modal">
 <div class="modal">
-<div class="modal-top"><span id="modalTitle">ĞÂ½¨ÄÚÈİ</span><button class="modal-close" id="closeModal">¡Á</button></div>
-<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-bottom:10px;font-size:14px;outline:none;font-family:inherit;">
-<option value="fit">¼õÖ¬¹ÜÀí</option>
-<option value="bill">¼ÒÍ¥¼ÇÕË</option>
-<option value="text">ÎÄ°¸ËØ²Ä¿â</option>
-<option value="photo">ÅÄÕÕ±Ê¼Ç</option>
-<option value="makeup">×±Èİ·ÖÏí</option>
-<option value="kid">º¢×Ó×÷ÒµÇø</option>
+<div class="modal-top">
+<span id="modalTitle">æ–°å»ºå†…å®¹</span>
+<button class="modal-close" id="closeModal">Ã—</button>
+</div>
+<select id="modalType">
+<option value="fit">ğŸ¥—å‡è„‚ç®¡ç†</option>
+<option value="bill">ğŸ’°å®¶åº­è®°è´¦</option>
+<option value="text">ğŸ“œæ–‡æ¡ˆç´ æåº“</option>
+<option value="photo">ğŸ“¸æ‹ç…§ç¬”è®°</option>
+<option value="makeup">ğŸ’„å¦†å®¹åˆ†äº«</option>
+<option value="kid">ğŸ“–å­©å­ä½œä¸šåŒº</option>
 </select>
-<textarea id="modalContent" placeholder="ÊäÈëÄÚÈİ..."></textarea>
+<textarea id="modalContent" placeholder="åœ¨æ­¤è¾“å…¥å†…å®¹..."></textarea>
 <div style="display:flex;gap:12px;">
-<button class="btn btn-light" id="cancelSave">È¡Ïû</button>
-<button class="btn btn-primary" id="submitSave">±£´æ</button>
+<button class="btn btn-light" id="cancelSave">å–æ¶ˆ</button>
+<button class="btn btn-primary" id="submitSave">ä¿å­˜</button>
 </div>
 </div>
 </div>
-
-<div class="modal-mask" id="profileModal">
-<div class="modal">
-<div class="modal-top"><span>±à¼­¸öÈË×ÊÁÏ</span><button class="modal-close" id="closeProfileModal">¡Á</button></div>
-<div style="margin:6px 0;">
-<label style="font-size:13px;color:var(--text-light);">Í·Ïñ×ÖÄ¸£¨1-2×Ö£©</label>
-<input id="inputAvatar" maxlength="2" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:18px;outline:none;">
-</div>
-<div style="margin:6px 0;">
-<label style="font-size:13px;color:var(--text-light);">êÇ³Æ</label>
-<input id="inputName" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
-</div>
-<div style="margin:6px 0;">
-<label style="font-size:13px;color:var(--text-light);">¸öĞÔÇ©Ãû</label>
-<input id="inputSig" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
-</div>
-<div style="display:flex;gap:12px;margin-top:14px;">
-<button class="btn btn-light" id="cancelProfile">È¡Ïû</button>
-<button class="btn btn-primary" id="saveProfile">±£´æ</button>
-</div>
-</div>
-</div>
-
 <script>
 const STORAGE_KEY = "pink_workbench_data";
-const PROFILE_KEY = "pink_profile";
-const CHECK_KEY = "pink_checkin";
-const MOOD_KEY = "pink_mood";
-
 let editId = null;
 let activeTab = "home";
-let selectedMood = null;
-let calCurrent = new Date();
-
-function loadData(){ const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : []; }
-function saveData(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
-function loadProfile(){
-  const raw = localStorage.getItem(PROFILE_KEY);
-  return raw ? JSON.parse(raw) : {avatar:"P", name:"Pink Ğ¡½ã½ã", sig:"ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®"};
+function loadData(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
 }
-function saveProfile(p){ localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }
-function loadCheckin(){ const raw = localStorage.getItem(CHECK_KEY); return raw ? JSON.parse(raw) : []; }
-function saveCheckin(arr){ localStorage.setItem(CHECK_KEY, JSON.stringify(arr)); }
-function loadMood(){ const raw = localStorage.getItem(MOOD_KEY); return raw ? JSON.parse(raw) : []; }
-function saveMood(arr){ localStorage.setItem(MOOD_KEY, JSON.stringify(arr)); }
-
+function saveData(list){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
 let dataList = loadData();
-let checkinList = loadCheckin();
-let moodList = loadMood();
-let profile = loadProfile();
-
 function updateTime(){
-  const now = new Date();
-  const weekArr=["ÖÜÈÕ","ÖÜÒ»","ÖÜ¶ş","ÖÜÈı","ÖÜËÄ","ÖÜÎå","ÖÜÁù"];
-  const y=now.getFullYear(), m=String(now.getMonth()+1).padStart(2,'0'), d=String(now.getDate()).padStart(2,'0');
-  const w=weekArr[now.getDay()];
-  const h=String(now.getHours()).padStart(2,'0'), mi=String(now.getMinutes()).padStart(2,'0'), s=String(now.getSeconds()).padStart(2,'0');
-  document.getElementById("timeBar").innerText = `${y}Äê${m}ÔÂ${d}ÈÕ ${w} ${h}:${mi}:${s}`;
+    const now = new Date();
+    const weekArr=["å‘¨æ—¥","å‘¨ä¸€","å‘¨äºŒ","å‘¨ä¸‰","å‘¨å››","å‘¨äº”","å‘¨å…­"];
+    const y = now.getFullYear();
+    const m = String(now.getMonth()+1).padStart(2,'0');
+    const d = String(now.getDate()).padStart(2,'0');
+    const w = weekArr[now.getDay()];
+    const h = String(now.getHours()).padStart(2,'0');
+    const mi = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById("timeBar").innerText = `${y}å¹´${m}æœˆ${d}æ—¥ ${w} ${h}:${mi}:${s}`;
 }
-updateTime(); setInterval(updateTime,1000);
-
-function renderProfile(){
-  document.getElementById("profileAvatar").innerText = profile.avatar || "P";
-  document.getElementById("profileName").innerText = profile.name || "Pink Ğ¡½ã½ã";
-  document.getElementById("profileSig").innerText = profile.sig || "";
-}
-renderProfile();
-
-const profileModal = document.getElementById("profileModal");
-document.getElementById("editProfile").onclick = ()=>{
-  document.getElementById("inputAvatar").value = profile.avatar || "";
-  document.getElementById("inputName").value = profile.name || "";
-  document.getElementById("inputSig").value = profile.sig || "";
-  profileModal.classList.add("open");
-};
-document.getElementById("closeProfileModal").onclick = ()=>profileModal.classList.remove("open");
-document.getElementById("cancelProfile").onclick = ()=>profileModal.classList.remove("open");
-document.getElementById("profileAvatar").onclick = ()=>{
-  const letters = ["P","M","Y","L","S","X","Z","H","A","B","C"];
-  let idx = letters.indexOf(profile.avatar);
-  if(idx === -1) idx = 0;
-  profile.avatar = letters[(idx + 1) % letters.length];
-  saveProfile(profile); renderProfile();
-};
-document.getElementById("saveProfile").onclick = ()=>{
-  profile.avatar = document.getElementById("inputAvatar").value.trim() || "P";
-  profile.name = document.getElementById("inputName").value.trim() || "Pink Ğ¡½ã½ã";
-  profile.sig = document.getElementById("inputSig").value.trim() || "ºÃºÃÉú»î£¬³ÖĞø±äÃÀ£¬ÎÈ²½¸ãÇ®";
-  saveProfile(profile); renderProfile();
-  profileModal.classList.remove("open");
-};
-
-function renderStats(){
-  document.getElementById("statTotal").innerText = dataList.length;
-  document.getElementById("statFav").innerText = dataList.filter(d=>d.favorite).length;
-  document.getElementById("statChecked").innerText = checkinList.length;
-  document.getElementById("statMood").innerText = moodList.length;
-  const moduleNames = {fit:"¼õÖ¬",bill:"¼ÇÕË",text:"ÎÄ°¸",photo:"ÉãÓ°",makeup:"×±Èİ",kid:"×÷Òµ"};
-  const wrap = document.getElementById("statModules");
-  let html = "";
-  Object.keys(moduleNames).forEach(k=>{
-    const n = dataList.filter(d=>d.type===k).length;
-    html += `<span class="stat-tag">${moduleNames[k]} ${n}</span>`;
-  });
-  wrap.innerHTML = html;
-}
-
-const allNavBtns = document.querySelectorAll(".nav-btn");
+updateTime();
+setInterval(updateTime,1000);
+const allBtns = document.querySelectorAll(".nav-btn");
 const sections = document.querySelectorAll(".section");
-allNavBtns.forEach(btn=>{
-  btn.onclick = ()=>{
-    const target = btn.dataset.target;
-    activeTab = target;
-    allNavBtns.forEach(b=>b.classList.remove("active"));
-    document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(b=>b.classList.add("active"));
-    sections.forEach(s=>s.classList.remove("show"));
-    document.getElementById(target).classList.add("show");
-    if(target==="home") renderStats();
-    if(target==="calendar") renderCalendar();
-    if(target==="mood") renderMoodList();
-    renderAllLists();
-  }
-})
-
-function renderList(type, keyword=""){
-  const wrap = document.getElementById("list-"+type);
-  let arr = dataList.filter(item=>item.type === type);
-  arr.sort((a,b)=>b.timeStamp - a.timeStamp);
-  if(keyword) arr = arr.filter(item=>item.content.includes(keyword));
-  if(arr.length===0){ wrap.innerHTML = `<div class="empty-tip">ÔİÎŞÄÚÈİ£¬µã»÷ÓÒÏÂ½Ç + Ìí¼Ó</div>`; return; }
-  let html = "";
-  arr.forEach(item=>{
-    const dateStr = new Date(item.timeStamp).toLocaleString();
-    const favIcon = item.favorite ? `<span class="fav-mark">¡ï</span>` : "";
-    html += `
-    <div class="card" data-id="${item.id}">
-      <div class="card-head">
-        <span class="card-title">${favIcon}¼ÇÂ¼</span>
-        <span class="card-time">${dateStr}</span>
-      </div>
-      <div class="card-content">${escapeHtml(item.content)}</div>
-      <div class="btn-row">
-        <button class="btn btn-light copyBtn" data-id="${item.id}">¸´ÖÆ</button>
-        <button class="btn btn-light favBtn" data-id="${item.id}">${item.favorite?"È¡ÏûÊÕ²Ø":"ÊÕ²Ø"}</button>
-        <button class="btn btn-light editBtn" data-id="${item.id}">±à¼­</button>
-        <button class="btn btn-danger delBtn" data-id="${item.id}">É¾³ı</button>
-      </div>
-    </div>`
-  })
-  wrap.innerHTML = html;
-  bindItemEvent();
-}
-function renderAllLists(){ ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t)); }
-function escapeHtml(str){ return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-function bindItemEvent(){
-  document.querySelectorAll(".copyBtn").forEach(btn=>{
-    btn.onclick = async ()=>{
-      const id = btn.dataset.id;
-      const item = dataList.find(d=>d.id===id);
-      try { await navigator.clipboard.writeText(item.content); alert("ÒÑ¸´ÖÆ£¡"); }
-      catch(e){ prompt("ÇëÊÖ¶¯¸´ÖÆ£º", item.content); }
+allBtns.forEach(btn=>{
+    btn.onclick = ()=>{
+        const target = btn.dataset.target;
+        activeTab = target;
+        allBtns.forEach(b=>b.classList.remove("active"));
+        document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(b=>b.classList.add("active"));
+        sections.forEach(s=>s.classList.remove("show"));
+        document.getElementById(target).classList.add("show");
+        renderAllLists();
     }
-  })
-  document.querySelectorAll(".favBtn").forEach(btn=>{
-    btn.onclick = ()=>{ const id=btn.dataset.id; const item=dataList.find(d=>d.id===id); item.favorite=!item.favorite; saveData(dataList); renderAllLists(); renderStats(); }
-  })
-  document.querySelectorAll(".editBtn").forEach(btn=>{
-    btn.onclick = ()=>{ const id=btn.dataset.id; const item=dataList.find(d=>d.id===id); editId=id;
-      document.getElementById("modalTitle").innerText="±à¼­ÄÚÈİ";
-      document.getElementById("modalType").value = item.type;
-      document.getElementById("modalContent").value = item.content;
-      openModal(); }
-  })
-  document.querySelectorAll(".delBtn").forEach(btn=>{
-    btn.onclick = ()=>{ if(!confirm("È·¶¨É¾³ıÕâÌõ¼ÇÂ¼£¿"))return; const id=btn.dataset.id;
-      dataList = dataList.filter(d=>d.id!==id); saveData(dataList); renderAllLists(); renderStats(); }
-  })
+})
+function escapeHtml(str){
+    return String(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
 }
-
+function renderList(type, keyword=""){
+    const wrap = document.getElementById("list-"+type);
+    let arr = dataList.filter(item=>item.type === type);
+    if(keyword){
+        arr = arr.filter(item=>item.content.includes(keyword));
+    }
+    arr.sort((a,b)=>b.time - a.time);
+    if(arr.length === 0){
+        wrap.innerHTML = `<div class="empty-tip">æš‚æ— è®°å½•ï¼Œç‚¹å‡»å³ä¸‹è§’ + æ·»åŠ </div>`;
+        return;
+    }
+    let html = "";
+    arr.forEach(item=>{
+        const dateStr = new Date(item.time).toLocaleString();
+        const favIcon = item.fav ? `<span class="fav-mark">â˜…</span>` : "";
+        html += `
+        <div class="card" data-id="${item.id}">
+            <div class="card-head">
+                <span class="card-title">${favIcon}è®°å½•</span>
+                <span class="card-time">${dateStr}</span>
+            </div>
+            <div class="card-content">${escapeHtml(item.content)}</div>
+            <div class="btn-row">
+                <button class="btn btn-light copyBtn" data-id="${item.id}">å¤åˆ¶</button>
+                <button class="btn btn-light favBtn" data-id="${item.id}">${item.fav?"å–æ¶ˆæ”¶è—":"æ”¶è—"}</button>
+                <button class="btn btn-light editBtn" data-id="${item.id}">ç¼–è¾‘</button>
+                <button class="btn btn-danger delBtn" data-id="${item.id}">åˆ é™¤</button>
+            </div>
+        </div>
+        `
+    })
+    wrap.innerHTML = html;
+    bindCardEvent();
+}
+function renderAllLists(){
+    ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t));
+}
+function bindCardEvent(){
+    document.querySelectorAll(".copyBtn").forEach(btn=>{
+        btn.onclick = async ()=>{
+            const id = btn.dataset.id;
+            const item = dataList.find(d=>d.id===id);
+            await navigator.clipboard.writeText(item.content);
+            alert("å¤åˆ¶æˆåŠŸ");
+        }
+    })
+    document.querySelectorAll(".favBtn").forEach(btn=>{
+        btn.onclick = ()=>{
+            const id = btn.dataset.id;
+            const item = dataList.find(d=>d.id===id);
+            item.fav = !item.fav;
+            saveData(dataList);
+            renderAllLists();
+        }
+    })
+    document.querySelectorAll(".editBtn").forEach(btn=>{
+        btn.onclick = ()=>{
+            const id = btn.dataset.id;
+            const item = dataList.find(d=>d.id===id);
+            editId = id;
+            document.getElementById("modalTitle").innerText="ç¼–è¾‘å†…å®¹";
+            document.getElementById("modalType").value = item.type;
+            document.getElementById("modalContent").value = item.content;
+            document.getElementById("modal").classList.add("open");
+        }
+    })
+    document.querySelectorAll(".delBtn").forEach(btn=>{
+        btn.onclick = ()=>{
+            if(!confirm("ç¡®å®šåˆ é™¤è¿™æ¡è®°å½•å—ï¼Ÿ"))return;
+            const id = btn.dataset.id;
+            dataList = dataList.filter(d=>d.id !== id);
+            saveData(dataList);
+            renderAllLists();
+        }
+    })
+}
 const modal = document.getElementById("modal");
 function openModal(){modal.classList.add("open");}
-function closeModal(){ modal.classList.remove("open"); editId=null;
-  document.getElementById("modalTitle").innerText="ĞÂ½¨ÄÚÈİ";
-  document.getElementById("modalContent").value=""; }
-document.getElementById("openAddModal").onclick = ()=>{
-  if(activeTab !== "home" && activeTab !== "mood" && activeTab !== "calendar")
-    document.getElementById("modalType").value = activeTab;
-  openModal();
+function closeModal(){
+    modal.classList.remove("open");
+    editId = null;
+    document.getElementById("modalTitle").innerText="æ–°å»ºå†…å®¹";
+    document.getElementById("modalContent").value = "";
+    document.getElementById("modalType").value = activeTab === "home" ? "text" : activeTab;
 }
+document.getElementById("openAddModal").onclick = openModal;
 document.getElementById("closeModal").onclick = closeModal;
 document.getElementById("cancelSave").onclick = closeModal;
 document.getElementById("submitSave").onclick = ()=>{
-  const type = document.getElementById("modalType").value;
-  const content = document.getElementById("modalContent").value.trim();
-  if(!content){alert("ÇëÊäÈëÄÚÈİ£¡");return;}
-  if(editId){
-    const obj = dataList.find(d=>d.id===editId);
-    obj.type=type; obj.content=content; obj.timeStamp=Date.now();
-  } else {
-    dataList.unshift({ id:String(Date.now()), type, content, favorite:false, timeStamp:Date.now() });
-  }
-  saveData(dataList); renderAllLists(); renderStats(); closeModal();
+    const type = document.getElementById("modalType").value;
+    const content = document.getElementById("modalContent").value.trim();
+    if(!content){alert("è¯·è¾“å…¥å†…å®¹ï¼");return;}
+    if(editId){
+        const obj = dataList.find(d=>d.id === editId);
+        obj.type = type;
+        obj.content = content;
+        obj.time = Date.now();
+    }else{
+        const newItem = {
+            id: String(Date.now()),
+            type,
+            content,
+            fav: false,
+            time: Date.now()
+        }
+        dataList.unshift(newItem);
+    }
+    saveData(dataList);
+    renderAllLists();
+    closeModal();
 }
-
 document.querySelectorAll(".search-box").forEach(input=>{
-  input.oninput = ()=>{ renderList(input.dataset.type, input.value.trim()); }
+    input.oninput = ()=>{
+        const type = input.dataset.type;
+        renderList(type, input.value.trim());
+    }
 })
-
-const moodBtns = document.querySelectorAll(".mood-btn");
-moodBtns.forEach(btn=>{
-  btn.onclick = ()=>{
-    selectedMood = btn.dataset.mood;
-    moodBtns.forEach(b=>b.classList.remove("selected"));
-    btn.classList.add("selected");
-  }
-})
-document.getElementById("saveMood").onclick = ()=>{
-  if(!selectedMood){ alert("ÇëÏÈÑ¡Ò»¸öĞÄÇé¡«"); return; }
-  const text = document.getElementById("moodText").value.trim();
-  const today = new Date().toDateString();
-  moodList = moodList.filter(m => new Date(m.timeStamp).toDateString() !== today);
-  moodList.unshift({ mood:selectedMood, text, timeStamp:Date.now() });
-  saveMood(moodList);
-  document.getElementById("moodText").value = "";
-  moodBtns.forEach(b=>b.classList.remove("selected"));
-  selectedMood = null;
-  renderMoodList(); renderStats();
-  alert("ĞÄÇéÒÑ¼ÇÂ¼£º" + selectedMood);
-}
-function renderMoodList(){
-  const wrap = document.getElementById("moodList");
-  if(moodList.length===0){ wrap.innerHTML = `<div class="empty-tip">»¹Ã»ÓĞĞÄÇé¼ÇÂ¼£¬Ñ¡Ò»¸ö±íÇé¿ªÊ¼°É¡«</div>`; return; }
-  let html = "";
-  moodList.forEach((item, idx)=>{
-    const d = new Date(item.timeStamp);
-    const dateStr = `${d.getMonth()+1}ÔÂ${d.getDate()}ÈÕ ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
-    html += `
-    <div class="mood-item">
-      <div class="mood-item-head">
-        <span class="mood-emoji">[${escapeHtml(item.mood)}]</span>
-        <span class="mood-date">${dateStr}</span>
-        <button class="del-btn-small" onclick="delMood(${idx})">É¾³ı</button>
-      </div>
-      <div class="mood-text">${escapeHtml(item.text || "£¨ÎŞÎÄ×Ö£©")}</div>
-    </div>`;
-  })
-  wrap.innerHTML = html;
-}
-function delMood(idx){
-  if(!confirm("É¾³ıÕâÌõĞÄÇé¼ÇÂ¼£¿")) return;
-  moodList.splice(idx,1); saveMood(moodList); renderMoodList(); renderStats();
-}
-window.delMood = delMood;
-
-function renderCalendar(){
-  const y = calCurrent.getFullYear();
-  const m = calCurrent.getMonth();
-  document.getElementById("calMonth").innerText = `${y}Äê${m+1}ÔÂ`;
-  const firstDay = new Date(y, m, 1).getDay();
-  const daysInMonth = new Date(y, m+1, 0).getDate();
-  const today = new Date();
-  const todayStr = today.toDateString();
-  let html = "";
-  ["ÈÕ","Ò»","¶ş","Èı","ËÄ","Îå","Áù"].forEach(w=>{ html += `<div class="cal-week">${w}</div>`; });
-  for(let i=0;i<firstDay;i++) html += `<div class="cal-day empty"></div>`;
-  for(let d=1; d<=daysInMonth; d++){
-    const dateObj = new Date(y, m, d);
-    const dateStr = dateObj.toDateString();
-    const checked = checkinList.includes(dateStr);
-    const isToday = dateStr === todayStr;
-    let cls = "cal-day";
-    if(checked) cls += " checked";
-    if(isToday) cls += " today";
-    html += `<div class="${cls}" data-date="${dateStr}">${d}</div>`;
-  }
-  document.getElementById("calGrid").innerHTML = html;
-  let streak = 0, cursor = new Date(today);
-  while(checkinList.includes(cursor.toDateString())){
-    streak++;
-    cursor.setDate(cursor.getDate()-1);
-  }
-  document.getElementById("calStreak").innerHTML = `Á¬Ğø´ò¿¨ <b>${streak}</b> Ìì ¡¤ ÀÛ¼Æ <b>${checkinList.length}</b> Ìì`;
-  const checkedToday = checkinList.includes(todayStr);
-  document.getElementById("todayCheckStatus").innerText = checkedToday
-    ? `½ñÈÕÒÑ´ò¿¨£¡¼ÌĞø±£³Ö¡«´ò¿¨Ê±¼ä£º${new Date().toLocaleString()}`
-    : `½ñÈÕ»¹Î´´ò¿¨£¬µã»÷ÏÂ·½°´Å¥¿ªÊ¼°É¡«`;
-  document.getElementById("checkToday").innerText = checkedToday ? "½ñÈÕÒÑ´ò¿¨" : "Íê³É½ñÈÕ´ò¿¨";
-  document.getElementById("checkToday").disabled = checkedToday;
-  document.getElementById("checkToday").style.opacity = checkedToday ? "0.6" : "1";
-}
-document.getElementById("calPrev").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()-1); renderCalendar(); }
-document.getElementById("calNext").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()+1); renderCalendar(); }
-document.getElementById("checkToday").onclick = ()=>{
-  const todayStr = new Date().toDateString();
-  if(checkinList.includes(todayStr)){ alert("½ñÌìÒÑ¾­´ò¹ı¿¨À²¡«"); return; }
-  checkinList.push(todayStr);
-  saveCheckin(checkinList);
-  renderCalendar(); renderStats();
-}
-
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("sw.js").catch(()=>{});
-}
-
-// ===== ³¹µ××èÖ¹ Safari ·­Òë£º¸øËùÓĞÔªËØ¼Ó translate="no" =====
-function applyNoTranslate(){
-  document.querySelectorAll("*").forEach(el=>{
-    if(!el.hasAttribute("translate")) el.setAttribute("translate","no");
-  });
-  document.documentElement.setAttribute("translate","no");
-  document.body.setAttribute("translate","no");
-}
-applyNoTranslate();
-// DOMContentLoaded Ö®ºóÔÙÖ´ĞĞÒ»´Î£¬È·±£¶¯Ì¬²åÈëµÄÄÚÈİÒ²±»±ê¼Ç
-document.addEventListener("DOMContentLoaded", applyNoTranslate);
-// ¼àÌıºóĞø¶¯Ì¬äÖÈ¾
-const observer = new MutationObserver(()=>{ applyNoTranslate(); });
-observer.observe(document.body, {childList:true, subtree:true});
-
-// ³õÊ¼»¯äÖÈ¾
 renderAllLists();
-renderStats();
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>? Pink自律工作台</title>
+<title>Pink 自律工作台</title>
 <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBJTksg55So56CB86WWveW6lw==IiwKICAic2hvcnRfbmFtZSI6IuW6lw==IiwKICAic3RhcnRfdXJsIjoiLiIsCiAgImRpc3BsYXkiOiJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6IiNGRkU2RUYiLAogICJ0aGVtZV9jb2xvciI6IiNGOEI4RDAiLAogICJpY29ucyI6WwogICAgewogICAgICAic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiUzRSUzQ3JlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0Y4QjhEMCIvJTNFJTNDdGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiJTNF8aeW5CUzQyUlMjtlM0N0ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6IjE5MngxOTIiLAogICAgICAidHlwZSI6ImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -24,12 +24,16 @@
 --radius-sm:10px;
 }
 *{margin:0;padding:0;box-sizing:border-box;
-font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Heiti SC",system-ui,-apple-system,sans-serif;
 -webkit-font-smoothing:antialiased;
 }
 body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;line-height:1.6;}
 
-/* 顶部实时时间栏 */
+/* ===== 图标系统（CSS绘制，不依赖emoji字体）===== */
+.ic{display:inline-flex;align-items:center;justify-content:center;width:1.1em;height:1.1em;
+margin-right:4px;vertical-align:-0.15em;flex-shrink:0;}
+
+/* 顶部时间栏 */
 .top-datetime{
 background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
 color:#fff;text-align:center;
@@ -38,10 +42,9 @@ position:sticky;top:0;z-index:100;
 box-shadow:0 2px 8px rgba(232,136,176,0.3);
 letter-spacing:0.5px;
 }
-/* 主体容器 */
 .wrapper{display:flex;flex:1;}
 
-/* 侧边竖导航（优化版） */
+/* 侧边导航 */
 .sidebar{
 width:140px;background:#fff;padding:18px 10px;
 display:flex;flex-direction:column;gap:6px;
@@ -50,21 +53,19 @@ box-shadow:2px 0 12px rgba(232,136,176,0.08);
 }
 .sidebar .nav-btn{
 width:100%;white-space:nowrap;padding:11px 10px;border-radius:var(--radius-sm);border:none;
-background:var(--card);color:var(--accent);font-size:13px;text-align:left;
+background:var(--card);color:var(--accent-deep);font-size:13px;text-align:left;
 cursor:pointer;transition:all 0.2s;font-weight:500;
-display:flex;align-items:center;gap:6px;
+display:flex;align-items:center;gap:8px;
 }
 .sidebar .nav-btn:hover{background:var(--sub);transform:translateX(2px);}
 .sidebar .nav-btn.active{
 background:linear-gradient(135deg,#E888B0 0%,#D96BA0 100%);
 color:#fff;box-shadow:0 3px 10px rgba(232,136,176,0.4);
 }
-.sidebar .nav-btn .icon{font-size:16px;}
+.sidebar .nav-btn .ic{width:16px;height:16px;fill:currentColor;}
 
-/* 内容区域 */
 .main-content{flex:1;padding:16px;overflow-y:auto;max-width:720px;margin:0 auto;width:100%;}
 
-/* 搜索框 */
 .search-box{
 width:100%;padding:11px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--main);
 background:#fff;margin-bottom:14px;font-size:14px;outline:none;
@@ -72,14 +73,13 @@ transition:border 0.2s,box-shadow 0.2s;
 }
 .search-box:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,136,176,0.15);}
 
-/* 卡片 */
 .card{
 background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;
 box-shadow:var(--shadow);transition:box-shadow 0.2s;
 }
 .card:hover{box-shadow:var(--shadow-hover);}
 .card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
-.card-title{font-weight:600;color:var(--accent-deep);font-size:15px;}
+.card-title{font-weight:600;color:var(--accent-deep);font-size:15px;display:flex;align-items:center;}
 .card-time{font-size:12px;color:#999;}
 .card-content{line-height:1.8;font-size:14px;margin:10px 0;white-space:pre-wrap;color:var(--text);}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
@@ -93,23 +93,21 @@ transition:transform 0.15s,opacity 0.15s;
 .btn-light{background:var(--sub);color:var(--accent-deep);}
 .btn-danger{background:#ffe0e0;color:#c44;}
 
-/* 悬浮新增按钮 */
 .add-btn-wrap{position:fixed;right:22px;bottom:22px;z-index:98;}
 .add-btn{
 width:56px;height:56px;border-radius:50%;border:none;
 background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 100%);
-color:#fff;font-size:28px;box-shadow:0 6px 18px rgba(232,136,176,0.4);
-cursor:pointer;transition:transform 0.2s;
+color:#fff;box-shadow:0 6px 18px rgba(232,136,176,0.4);
+cursor:pointer;transition:transform 0.2s;font-size:32px;font-weight:300;line-height:1;
 }
-.add-btn:hover{transform:scale(1.06) rotate(90deg);}
+.add-btn:hover{transform:scale(1.06);}
 .add-btn:active{transform:scale(0.96);}
 
 .section{display:none;}
 .section.show{display:block;animation:fadeIn 0.3s;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-.fav-mark{color:#ffc107;}
+.fav-mark{color:#ffc107;font-weight:700;}
 
-/* 弹窗 */
 .modal-mask{
 position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;
 align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px);
@@ -119,52 +117,43 @@ align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(2px)
 width:100%;max-width:520px;background:#fff;border-radius:20px;padding:22px;
 box-shadow:0 20px 60px rgba(0,0,0,0.2);
 }
-.modal textarea{
-width:100%;min-height:120px;padding:12px;border-radius:12px;border:1.5px solid var(--main);
-margin:10px 0;font-size:14px;outline:none;font-family:inherit;resize:vertical;
+.modal textarea, .modal input{
+width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);
+margin:6px 0 12px;font-size:14px;outline:none;font-family:inherit;
 }
-.modal textarea:focus{border-color:var(--accent);}
+.modal textarea{min-height:120px;resize:vertical;}
+.modal textarea:focus, .modal input:focus{border-color:var(--accent);}
 .modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .modal-top span{font-weight:600;color:var(--accent-deep);font-size:16px;}
 .modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#999;line-height:1;}
 .modal-close:hover{color:#333;}
 .empty-tip{text-align:center;padding:50px 0;color:#bbb;font-size:14px;}
 
-/* ===== 个人头像横幅 ===== */
+/* 个人资料横幅 */
 .profile-banner{
 background:linear-gradient(135deg,#F8B8D0 0%,#E888B0 50%,#D96BA0 100%);
 border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;
 color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
-.profile-banner::before{
-content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;
-background:rgba(255,255,255,0.12);border-radius:50%;
-}
-.profile-banner::after{
-content:"";position:absolute;bottom:-40px;left:-20px;width:100px;height:100px;
-background:rgba(255,255,255,0.08);border-radius:50%;
-}
+.profile-banner::before{content:"";position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,0.12);border-radius:50%;}
+.profile-banner::after{content:"";position:absolute;bottom:-40px;left:-20px;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;}
 .profile-row{display:flex;align-items:center;gap:16px;position:relative;z-index:1;}
 .profile-avatar{
 width:64px;height:64px;border-radius:50%;background:#fff;
 display:flex;align-items:center;justify-content:center;font-size:34px;
-box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);flex-shrink:0;cursor:pointer;color:var(--accent-deep);
+font-weight:600;
 }
 .profile-info{flex:1;min-width:0;}
 .profile-name{font-size:19px;font-weight:600;margin-bottom:4px;}
 .profile-sig{font-size:13px;opacity:0.92;}
 .profile-edit{background:rgba(255,255,255,0.25);border:none;color:#fff;padding:6px 12px;
-border-radius:99px;font-size:12px;cursor:pointer;flex-shrink:0;}
+border-radius:99px;font-size:12px;cursor:pointer;flex-shrink:0;font-family:inherit;}
 .profile-edit:hover{background:rgba(255,255,255,0.4);}
 
-/* ===== 统计看板 ===== */
-.stats-grid{
-display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;
-}
-.stat-card{
-background:#fff;border-radius:var(--radius);padding:14px 8px;text-align:center;
-box-shadow:var(--shadow);
-}
+/* 统计看板 */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.stat-card{background:#fff;border-radius:var(--radius);padding:14px 8px;text-align:center;box-shadow:var(--shadow);}
 .stat-num{font-size:22px;font-weight:700;color:var(--accent-deep);line-height:1.2;}
 .stat-label{font-size:11px;color:var(--text-light);margin-top:4px;}
 .stat-recent{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow);}
@@ -172,12 +161,12 @@ box-shadow:var(--shadow);
 .stat-recent-list{display:flex;flex-wrap:wrap;gap:6px;}
 .stat-tag{background:var(--card);color:var(--accent-deep);padding:4px 10px;border-radius:99px;font-size:12px;}
 
-/* ===== 打卡日历 ===== */
+/* 打卡日历 */
 .calendar-wrap{background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow);}
 .calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
 .calendar-head .month{font-weight:600;color:var(--accent-deep);font-size:15px;}
 .cal-nav{background:var(--card);border:none;color:var(--accent-deep);width:28px;height:28px;
-border-radius:8px;cursor:pointer;font-size:15px;}
+border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;}
 .cal-nav:hover{background:var(--sub);}
 .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
 .cal-week{text-align:center;font-size:11px;color:#bbb;padding:4px 0;}
@@ -189,12 +178,8 @@ background:#fafafa;color:var(--text);transition:background 0.15s;
 .cal-day:hover{background:var(--sub);}
 .cal-day.empty{background:transparent;cursor:default;}
 .cal-day.today{font-weight:700;color:var(--accent-deep);border:1.5px solid var(--accent);}
-.cal-day.checked{
-background:linear-gradient(135deg,#F8B8D0,#E888B0);color:#fff;font-weight:600;
-}
-.cal-day.checked::after{
-content:"?";position:absolute;bottom:2px;right:3px;font-size:9px;
-}
+.cal-day.checked{background:linear-gradient(135deg,#F8B8D0,#E888B0);color:#fff;font-weight:600;}
+.cal-day.checked::after{content:"?";position:absolute;bottom:1px;right:3px;font-size:9px;}
 .cal-legend{display:flex;gap:14px;margin-top:12px;font-size:12px;color:var(--text-light);justify-content:center;}
 .cal-legend span{display:flex;align-items:center;gap:4px;}
 .cal-dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
@@ -204,21 +189,28 @@ padding:12px 16px;margin-top:12px;text-align:center;color:var(--accent-deep);fon
 }
 .cal-streak b{font-size:18px;color:var(--accent-deep);}
 
-/* ===== 心情日记 ===== */
+/* 心情 */
 .mood-row{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;}
 .mood-btn{
 width:42px;height:42px;border-radius:50%;border:2px solid transparent;
 background:var(--card);font-size:22px;cursor:pointer;transition:all 0.2s;
+font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
 }
 .mood-btn:hover{transform:scale(1.1);}
 .mood-btn.selected{border-color:var(--accent);background:#fff;transform:scale(1.1);}
 .mood-item{background:#fff;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);}
-.mood-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
-.mood-emoji{font-size:24px;}
+.mood-item-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px;}
+.mood-emoji{
+font-size:24px;
+font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+}
 .mood-date{font-size:12px;color:#999;}
 .mood-text{font-size:14px;line-height:1.7;color:var(--text);white-space:pre-wrap;}
+.del-btn-small{
+margin-left:auto;background:#ffe0e0;color:#c44;border:none;
+padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;
+}
 
-/* 小屏适配 */
 .bottom-nav{display:none;}
 @media (max-width:768px){
 .wrapper{flex-direction:column;}
@@ -232,6 +224,7 @@ box-shadow:0 -2px 12px rgba(232,136,176,0.1);
 .bottom-nav .nav-btn{
 white-space:nowrap;padding:8px 14px;border-radius:99px;border:none;
 background:var(--card);color:var(--accent-deep);font-size:13px;cursor:pointer;
+font-family:inherit;
 }
 .bottom-nav .nav-btn.active{background:linear-gradient(135deg,#E888B0,#D96BA0);color:#fff;}
 body{padding-bottom:70px;}
@@ -241,37 +234,55 @@ body{padding-bottom:70px;}
 </style>
 </head>
 <body>
+<!-- SVG图标库（inline，不依赖外部资源） -->
+<svg width="0" height="0" style="position:absolute;">
+<defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M12 3l9 8h-3v9h-4v-6h-4v6H6v-9H3l9-8z"/></symbol>
+<symbol id="i-face" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><path d="M8 14c1 1.5 2.5 2.5 4 2.5s3-1 4-2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-9 6-14 14-14 0 8-5 14-14 14zM5 19l4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 12h4M3 9h14" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z M15 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h4v13H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="i-cosmetics" viewBox="0 0 24 24"><path d="M9 4h6v3H9z M8 7h8l-1 13H9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h6a3 3 0 013 3v14a2 2 0 00-2-2H5z M19 4h-6a3 3 0 00-3 3v14a2 2 0 012-2h7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9.5C1.5 7 4 4 7 4c2 0 3.5 1.5 5 3 1.5-1.5 3-3 5-3 3 0 5.5 3 4 7.5C19 16.5 12 21 12 21z" fill="currentColor"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4l11-11-4-4L4 16z M14 5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12l9-9h9v9l-9 9z M16 7a1.5 1.5 0 100 0.001z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</defs>
+</svg>
+
 <div class="top-datetime" id="timeBar"></div>
 
 <div class="wrapper">
     <div class="sidebar" id="sidebar">
-        <button class="nav-btn active" data-target="home"><span class="icon">?</span>首页</button>
-        <button class="nav-btn" data-target="mood"><span class="icon">?</span>心情日记</button>
-        <button class="nav-btn" data-target="calendar"><span class="icon">?</span>打卡日历</button>
-        <button class="nav-btn" data-target="fit"><span class="icon">?</span>减脂管理</button>
-        <button class="nav-btn" data-target="bill"><span class="icon">?</span>家庭记账</button>
-        <button class="nav-btn" data-target="text"><span class="icon">?</span>文案素材</button>
-        <button class="nav-btn" data-target="photo"><span class="icon">?</span>拍照笔记</button>
-        <button class="nav-btn" data-target="makeup"><span class="icon">?</span>妆容分享</button>
-        <button class="nav-btn" data-target="kid"><span class="icon">?</span>孩子作业</button>
+        <button class="nav-btn active" data-target="home"><svg class="ic"><use href="#i-home"/></svg>首页</button>
+        <button class="nav-btn" data-target="mood"><svg class="ic"><use href="#i-face"/></svg>心情日记</button>
+        <button class="nav-btn" data-target="calendar"><svg class="ic"><use href="#i-cal"/></svg>打卡日历</button>
+        <button class="nav-btn" data-target="fit"><svg class="ic"><use href="#i-leaf"/></svg>减脂管理</button>
+        <button class="nav-btn" data-target="bill"><svg class="ic"><use href="#i-wallet"/></svg>家庭记账</button>
+        <button class="nav-btn" data-target="text"><svg class="ic"><use href="#i-doc"/></svg>文案素材</button>
+        <button class="nav-btn" data-target="photo"><svg class="ic"><use href="#i-camera"/></svg>拍照笔记</button>
+        <button class="nav-btn" data-target="makeup"><svg class="ic"><use href="#i-cosmetics"/></svg>妆容分享</button>
+        <button class="nav-btn" data-target="kid"><svg class="ic"><use href="#i-book"/></svg>孩子作业</button>
     </div>
 
     <div class="main-content">
-        <!--首页-->
         <div class="section show" id="home">
-            <!-- 个人头像横幅 -->
             <div class="profile-banner">
                 <div class="profile-row">
-                    <div class="profile-avatar" id="profileAvatar" title="点击换头像">?</div>
+                    <div class="profile-avatar" id="profileAvatar" title="点击换头像">P</div>
                     <div class="profile-info">
                         <div class="profile-name" id="profileName">Pink 小姐姐</div>
-                        <div class="profile-sig" id="profileSig">好好生活，持续变美，稳步搞钱?</div>
+                        <div class="profile-sig" id="profileSig">好好生活，持续变美，稳步搞钱</div>
                     </div>
-                    <button class="profile-edit" id="editProfile">?? 编辑</button>
+                    <button class="profile-edit" id="editProfile">编辑资料</button>
                 </div>
             </div>
 
-            <!-- 数据统计看板 -->
             <div class="stats-grid" id="statsGrid">
                 <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">总记录</div></div>
                 <div class="stat-card"><div class="stat-num" id="statFav">0</div><div class="stat-label">收藏</div></div>
@@ -279,37 +290,36 @@ body{padding-bottom:70px;}
                 <div class="stat-card"><div class="stat-num" id="statMood">0</div><div class="stat-label">心情条</div></div>
             </div>
             <div class="stat-recent">
-                <div class="stat-recent-title">? 各模块记录数</div>
+                <div class="stat-recent-title">各模块记录数</div>
                 <div class="stat-recent-list" id="statModules"></div>
             </div>
 
-            <!-- 首页欢迎卡片 -->
             <div class="card">
-                <div class="card-title">? Pink自律多功能工作台</div>
+                <div class="card-title"><svg class="ic"><use href="#i-heart"/></svg>Pink 自律多功能工作台</div>
                 <div class="card-content">
 减脂｜记账｜文案｜摄影｜妆容｜亲子学习｜心情日记｜打卡日历<br><br>
-每天进步一点点，遇见更好的自己?
+每天进步一点点，遇见更好的自己
                 </div>
             </div>
         </div>
 
-        <!--心情日记-->
         <div class="section" id="mood">
             <div class="card">
-                <div class="card-title">? 今日心情</div>
+                <div class="card-title">今日心情</div>
+                <div class="card-content">选一个表情，再写一句话</div>
                 <div class="mood-row" id="moodPicker">
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
-                    <button class="mood-btn" data-mood="?">?</button>
+                    <button class="mood-btn" data-mood="开心">开心</button>
+                    <button class="mood-btn" data-mood="兴奋">兴奋</button>
+                    <button class="mood-btn" data-mood="幸福">幸福</button>
+                    <button class="mood-btn" data-mood="平静">平静</button>
+                    <button class="mood-btn" data-mood="一般">一般</button>
+                    <button class="mood-btn" data-mood="疲倦">疲倦</button>
+                    <button class="mood-btn" data-mood="焦虑">焦虑</button>
+                    <button class="mood-btn" data-mood="难过">难过</button>
+                    <button class="mood-btn" data-mood="生气">生气</button>
+                    <button class="mood-btn" data-mood="不适">不适</button>
                 </div>
-                <textarea id="moodText" placeholder="今天发生了什么？写一句话记录吧～" style="width:100%;min-height:80px;padding:12px;border-radius:12px;border:1.5px solid var(--main);font-size:14px;outline:none;font-family:inherit;resize:vertical;"></textarea>
+                <textarea id="moodText" placeholder="今天发生了什么？写一句话记录吧～"></textarea>
                 <div class="btn-row">
                     <button class="btn btn-primary" id="saveMood">保存今日心情</button>
                 </div>
@@ -317,7 +327,6 @@ body{padding-bottom:70px;}
             <div id="moodList"></div>
         </div>
 
-        <!--打卡日历-->
         <div class="section" id="calendar">
             <div class="calendar-wrap">
                 <div class="calendar-head">
@@ -331,10 +340,10 @@ body{padding-bottom:70px;}
                     <span><span class="cal-dot" style="background:#fafafa;border:1px solid #eee;"></span>未打卡</span>
                     <span><span class="cal-dot" style="background:#fff;border:1.5px solid var(--accent);"></span>今天</span>
                 </div>
-                <div class="cal-streak" id="calStreak">? 连续打卡 <b>0</b> 天 · 累计 <b>0</b> 天</div>
+                <div class="cal-streak" id="calStreak">连续打卡 <b>0</b> 天 · 累计 <b>0</b> 天</div>
             </div>
             <div class="card">
-                <div class="card-title">? 今日打卡</div>
+                <div class="card-title">今日打卡</div>
                 <div class="card-content" id="todayCheckStatus">今日还未打卡，点击下方按钮开始吧～</div>
                 <div class="btn-row">
                     <button class="btn btn-primary" id="checkToday">完成今日打卡</button>
@@ -342,67 +351,57 @@ body{padding-bottom:70px;}
             </div>
         </div>
 
-        <!--减脂-->
         <div class="section" id="fit">
-            <input class="search-box" placeholder="? 搜索减脂相关内容..." data-type="fit">
+            <input class="search-box" placeholder="搜索减脂相关内容..." data-type="fit">
             <div id="list-fit"></div>
         </div>
-        <!--记账-->
         <div class="section" id="bill">
-            <input class="search-box" placeholder="? 搜索记账收支内容..." data-type="bill">
+            <input class="search-box" placeholder="搜索记账收支内容..." data-type="bill">
             <div id="list-bill"></div>
         </div>
-        <!--文案库-->
         <div class="section" id="text">
-            <input class="search-box" placeholder="? 搜索文案素材..." data-type="text">
+            <input class="search-box" placeholder="搜索文案素材..." data-type="text">
             <div id="list-text"></div>
         </div>
-        <!--拍照-->
         <div class="section" id="photo">
-            <input class="search-box" placeholder="? 搜索摄影笔记..." data-type="photo">
+            <input class="search-box" placeholder="搜索摄影笔记..." data-type="photo">
             <div id="list-photo"></div>
         </div>
-        <!--妆容-->
         <div class="section" id="makeup">
-            <input class="search-box" placeholder="? 搜索妆容分享..." data-type="makeup">
+            <input class="search-box" placeholder="搜索妆容分享..." data-type="makeup">
             <div id="list-makeup"></div>
         </div>
-        <!--亲子作业-->
         <div class="section" id="kid">
-            <input class="search-box" placeholder="? 搜索孩子学习记录..." data-type="kid">
+            <input class="search-box" placeholder="搜索孩子学习记录..." data-type="kid">
             <div id="list-kid"></div>
         </div>
     </div>
 </div>
 
 <div class="bottom-nav">
-    <button class="nav-btn active" data-target="home">?首页</button>
-    <button class="nav-btn" data-target="mood">?心情</button>
-    <button class="nav-btn" data-target="calendar">?打卡</button>
-    <button class="nav-btn" data-target="fit">?减脂</button>
-    <button class="nav-btn" data-target="bill">?记账</button>
-    <button class="nav-btn" data-target="text">?文案</button>
-    <button class="nav-btn" data-target="photo">?摄影</button>
-    <button class="nav-btn" data-target="makeup">?妆容</button>
-    <button class="nav-btn" data-target="kid">?作业</button>
+    <button class="nav-btn active" data-target="home">首页</button>
+    <button class="nav-btn" data-target="mood">心情</button>
+    <button class="nav-btn" data-target="calendar">打卡</button>
+    <button class="nav-btn" data-target="fit">减脂</button>
+    <button class="nav-btn" data-target="bill">记账</button>
+    <button class="nav-btn" data-target="text">文案</button>
+    <button class="nav-btn" data-target="photo">摄影</button>
+    <button class="nav-btn" data-target="makeup">妆容</button>
+    <button class="nav-btn" data-target="kid">作业</button>
 </div>
 
 <div class="add-btn-wrap"><button class="add-btn" id="openAddModal">+</button></div>
 
-<!--弹窗：新增/编辑内容-->
 <div class="modal-mask" id="modal">
 <div class="modal">
-<div class="modal-top">
-<span id="modalTitle">新建内容</span>
-<button class="modal-close" id="closeModal">×</button>
-</div>
-<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-bottom:10px;font-size:14px;outline:none;">
-<option value="fit">?减脂管理</option>
-<option value="bill">?家庭记账</option>
-<option value="text">?文案素材库</option>
-<option value="photo">?拍照笔记</option>
-<option value="makeup">?妆容分享</option>
-<option value="kid">?孩子作业区</option>
+<div class="modal-top"><span id="modalTitle">新建内容</span><button class="modal-close" id="closeModal">×</button></div>
+<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-bottom:10px;font-size:14px;outline:none;font-family:inherit;">
+<option value="fit">减脂管理</option>
+<option value="bill">家庭记账</option>
+<option value="text">文案素材库</option>
+<option value="photo">拍照笔记</option>
+<option value="makeup">妆容分享</option>
+<option value="kid">孩子作业区</option>
 </select>
 <textarea id="modalContent" placeholder="输入内容..."></textarea>
 <div style="display:flex;gap:12px;">
@@ -412,22 +411,18 @@ body{padding-bottom:70px;}
 </div>
 </div>
 
-<!--弹窗：编辑个人资料-->
 <div class="modal-mask" id="profileModal">
 <div class="modal">
-<div class="modal-top">
-<span>?? 编辑个人资料</span>
-<button class="modal-close" id="closeProfileModal">×</button>
+<div class="modal-top"><span>编辑个人资料</span><button class="modal-close" id="closeProfileModal">×</button></div>
+<div style="margin:6px 0;">
+<label style="font-size:13px;color:var(--text-light);">头像字母（1-2字）</label>
+<input id="inputAvatar" maxlength="2" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:18px;outline:none;">
 </div>
-<div style="margin:10px 0;">
-<label style="font-size:13px;color:var(--text-light);">头像（输入 emoji 或文字）</label>
-<input id="inputAvatar" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:18px;outline:none;">
-</div>
-<div style="margin:10px 0;">
+<div style="margin:6px 0;">
 <label style="font-size:13px;color:var(--text-light);">昵称</label>
 <input id="inputName" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
 </div>
-<div style="margin:10px 0;">
+<div style="margin:6px 0;">
 <label style="font-size:13px;color:var(--text-light);">个性签名</label>
 <input id="inputSig" style="width:100%;padding:10px;border-radius:12px;border:1.5px solid var(--main);margin-top:6px;font-size:14px;outline:none;">
 </div>
@@ -439,7 +434,6 @@ body{padding-bottom:70px;}
 </div>
 
 <script>
-// ========== 存储 ==========
 const STORAGE_KEY = "pink_workbench_data";
 const PROFILE_KEY = "pink_profile";
 const CHECK_KEY = "pink_checkin";
@@ -454,7 +448,7 @@ function loadData(){ const raw = localStorage.getItem(STORAGE_KEY); return raw ?
 function saveData(list){ localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
 function loadProfile(){
   const raw = localStorage.getItem(PROFILE_KEY);
-  return raw ? JSON.parse(raw) : {avatar:"?", name:"Pink 小姐姐", sig:"好好生活，持续变美，稳步搞钱?"};
+  return raw ? JSON.parse(raw) : {avatar:"P", name:"Pink 小姐姐", sig:"好好生活，持续变美，稳步搞钱"};
 }
 function saveProfile(p){ localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }
 function loadCheckin(){ const raw = localStorage.getItem(CHECK_KEY); return raw ? JSON.parse(raw) : []; }
@@ -467,7 +461,6 @@ let checkinList = loadCheckin();
 let moodList = loadMood();
 let profile = loadProfile();
 
-// ========== 顶部时间 ==========
 function updateTime(){
   const now = new Date();
   const weekArr=["周日","周一","周二","周三","周四","周五","周六"];
@@ -478,9 +471,8 @@ function updateTime(){
 }
 updateTime(); setInterval(updateTime,1000);
 
-// ========== 个人资料 ==========
 function renderProfile(){
-  document.getElementById("profileAvatar").innerText = profile.avatar || "?";
+  document.getElementById("profileAvatar").innerText = profile.avatar || "P";
   document.getElementById("profileName").innerText = profile.name || "Pink 小姐姐";
   document.getElementById("profileSig").innerText = profile.sig || "";
 }
@@ -496,28 +488,26 @@ document.getElementById("editProfile").onclick = ()=>{
 document.getElementById("closeProfileModal").onclick = ()=>profileModal.classList.remove("open");
 document.getElementById("cancelProfile").onclick = ()=>profileModal.classList.remove("open");
 document.getElementById("profileAvatar").onclick = ()=>{
-  const emojis = ["?","?","?","?","?","?","?","?","?","?","?","?"];
-  let idx = emojis.indexOf(profile.avatar);
-  idx = (idx + 1) % emojis.length;
-  profile.avatar = emojis[idx];
+  const letters = ["P","M","Y","L","S","X","Z","H","A","B","C"];
+  let idx = letters.indexOf(profile.avatar);
+  if(idx === -1) idx = 0;
+  profile.avatar = letters[(idx + 1) % letters.length];
   saveProfile(profile); renderProfile();
 };
 document.getElementById("saveProfile").onclick = ()=>{
-  profile.avatar = document.getElementById("inputAvatar").value.trim() || "?";
+  profile.avatar = document.getElementById("inputAvatar").value.trim() || "P";
   profile.name = document.getElementById("inputName").value.trim() || "Pink 小姐姐";
-  profile.sig = document.getElementById("inputSig").value.trim() || "好好生活，持续变美，稳步搞钱?";
+  profile.sig = document.getElementById("inputSig").value.trim() || "好好生活，持续变美，稳步搞钱";
   saveProfile(profile); renderProfile();
   profileModal.classList.remove("open");
 };
 
-// ========== 统计看板 ==========
 function renderStats(){
-  const today = new Date().toDateString();
   document.getElementById("statTotal").innerText = dataList.length;
   document.getElementById("statFav").innerText = dataList.filter(d=>d.favorite).length;
   document.getElementById("statChecked").innerText = checkinList.length;
   document.getElementById("statMood").innerText = moodList.length;
-  const moduleNames = {fit:"?减脂",bill:"?记账",text:"?文案",photo:"?摄影",makeup:"?妆容",kid:"?作业"};
+  const moduleNames = {fit:"减脂",bill:"记账",text:"文案",photo:"摄影",makeup:"妆容",kid:"作业"};
   const wrap = document.getElementById("statModules");
   let html = "";
   Object.keys(moduleNames).forEach(k=>{
@@ -527,7 +517,6 @@ function renderStats(){
   wrap.innerHTML = html;
 }
 
-// ========== 导航 ==========
 const allNavBtns = document.querySelectorAll(".nav-btn");
 const sections = document.querySelectorAll(".section");
 allNavBtns.forEach(btn=>{
@@ -545,7 +534,6 @@ allNavBtns.forEach(btn=>{
   }
 })
 
-// ========== 列表渲染 ==========
 function renderList(type, keyword=""){
   const wrap = document.getElementById("list-"+type);
   let arr = dataList.filter(item=>item.type === type);
@@ -602,7 +590,6 @@ function bindItemEvent(){
   })
 }
 
-// ========== 弹窗 ==========
 const modal = document.getElementById("modal");
 function openModal(){modal.classList.add("open");}
 function closeModal(){ modal.classList.remove("open"); editId=null;
@@ -628,12 +615,10 @@ document.getElementById("submitSave").onclick = ()=>{
   saveData(dataList); renderAllLists(); renderStats(); closeModal();
 }
 
-// ========== 搜索 ==========
 document.querySelectorAll(".search-box").forEach(input=>{
   input.oninput = ()=>{ renderList(input.dataset.type, input.value.trim()); }
 })
 
-// ========== 心情日记 ==========
 const moodBtns = document.querySelectorAll(".mood-btn");
 moodBtns.forEach(btn=>{
   btn.onclick = ()=>{
@@ -643,10 +628,9 @@ moodBtns.forEach(btn=>{
   }
 })
 document.getElementById("saveMood").onclick = ()=>{
-  if(!selectedMood){ alert("请先选一个心情表情～"); return; }
+  if(!selectedMood){ alert("请先选一个心情～"); return; }
   const text = document.getElementById("moodText").value.trim();
   const today = new Date().toDateString();
-  // 覆盖今天的心情
   moodList = moodList.filter(m => new Date(m.timeStamp).toDateString() !== today);
   moodList.unshift({ mood:selectedMood, text, timeStamp:Date.now() });
   saveMood(moodList);
@@ -654,11 +638,11 @@ document.getElementById("saveMood").onclick = ()=>{
   moodBtns.forEach(b=>b.classList.remove("selected"));
   selectedMood = null;
   renderMoodList(); renderStats();
-  alert("心情已记录 " + selectedMood);
+  alert("心情已记录：" + selectedMood);
 }
 function renderMoodList(){
   const wrap = document.getElementById("moodList");
-  if(moodList.length===0){ wrap.innerHTML = `<div class="empty-tip">还没有心情记录，选个表情开始吧～</div>`; return; }
+  if(moodList.length===0){ wrap.innerHTML = `<div class="empty-tip">还没有心情记录，选一个表情开始吧～</div>`; return; }
   let html = "";
   moodList.forEach((item, idx)=>{
     const d = new Date(item.timeStamp);
@@ -666,9 +650,9 @@ function renderMoodList(){
     html += `
     <div class="mood-item">
       <div class="mood-item-head">
-        <span class="mood-emoji">${item.mood}</span>
+        <span class="mood-emoji">[${escapeHtml(item.mood)}]</span>
         <span class="mood-date">${dateStr}</span>
-        <button class="btn btn-danger" style="margin-left:auto;padding:4px 10px;font-size:12px;" onclick="delMood(${idx})">删除</button>
+        <button class="del-btn-small" onclick="delMood(${idx})">删除</button>
       </div>
       <div class="mood-text">${escapeHtml(item.text || "（无文字）")}</div>
     </div>`;
@@ -681,7 +665,6 @@ function delMood(idx){
 }
 window.delMood = delMood;
 
-// ========== 打卡日历 ==========
 function renderCalendar(){
   const y = calCurrent.getFullYear();
   const m = calCurrent.getMonth();
@@ -704,22 +687,19 @@ function renderCalendar(){
     html += `<div class="${cls}" data-date="${dateStr}">${d}</div>`;
   }
   document.getElementById("calGrid").innerHTML = html;
-  // 连续打卡
   let streak = 0, cursor = new Date(today);
   while(checkinList.includes(cursor.toDateString())){
     streak++;
     cursor.setDate(cursor.getDate()-1);
   }
-  document.getElementById("calStreak").innerHTML = `? 连续打卡 <b>${streak}</b> 天 · 累计 <b>${checkinList.length}</b> 天`;
-  // 今日状态
+  document.getElementById("calStreak").innerHTML = `连续打卡 <b>${streak}</b> 天 · 累计 <b>${checkinList.length}</b> 天`;
   const checkedToday = checkinList.includes(todayStr);
   document.getElementById("todayCheckStatus").innerText = checkedToday
-    ? `? 今日已打卡！继续保持～\n打卡时间：${new Date().toLocaleString()}`
+    ? `今日已打卡！继续保持～打卡时间：${new Date().toLocaleString()}`
     : `今日还未打卡，点击下方按钮开始吧～`;
-  document.getElementById("checkToday").innerText = checkedToday ? "今日已打卡 ?" : "完成今日打卡";
+  document.getElementById("checkToday").innerText = checkedToday ? "今日已打卡" : "完成今日打卡";
   document.getElementById("checkToday").disabled = checkedToday;
-  if(checkedToday) document.getElementById("checkToday").style.opacity = "0.6";
-  else document.getElementById("checkToday").style.opacity = "1";
+  document.getElementById("checkToday").style.opacity = checkedToday ? "0.6" : "1";
 }
 document.getElementById("calPrev").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()-1); renderCalendar(); }
 document.getElementById("calNext").onclick = ()=>{ calCurrent.setMonth(calCurrent.getMonth()+1); renderCalendar(); }
@@ -731,12 +711,10 @@ document.getElementById("checkToday").onclick = ()=>{
   renderCalendar(); renderStats();
 }
 
-// ========== PWA ==========
 if("serviceWorker" in navigator){
   navigator.serviceWorker.register("sw.js").catch(()=>{});
 }
 
-// 初始化
 renderAllLists();
 renderStats();
 </script>

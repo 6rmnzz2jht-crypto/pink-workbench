@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🏠 Pink自律工作台</title>
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlBJTksg55So56CB86WWveW6lw==IiwKICAic2hvcnRfbmFtZSI6IuW6lw==IiwKICAic3RhcnRfdXJsIjoiLiIsCiAgImRpc3BsYXkiOiJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6IiNGRkU2RUYiLAogICJ0aGVtZV9jb2xvciI6IiNGOEI4RDAiLAogICJpY29ucyI6WwogICAgewogICAgICAic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLCUzQ3N2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiUzRSUzQ3JlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSIyMCIgZmlsbD0iI0Y4QjhEMCIvJTNFJTNDdGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiJTNF8aeW5CUzQyUlMjtlM0N0ZXh0JTNFJTNDL3N2ZyUzRSIsCiAgICAgICJzaXplcyI6IjE5MngxOTIiLAogICAgICAidHlwZSI6ImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F8B8D0">
+<style>
+:root{
+--main:#F8B8D0;
+--sub:#FFE6EF;
+--card:#FFF5F9;
+--accent:#E888B0;
+--text:#333333;
+--light:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;}
+body{background:var(--sub);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+/* 顶部实时时间栏 */
+.top-datetime{
+background:var(--main);
+color:#fff;
+text-align:center;
+padding:12px 8px;
+font-size:15px;
+font-weight:500;
+position:sticky;top:0;z-index:100;
+box-shadow:0 2px 6px #00000012;
+}
+/* 主体容器：大屏左右布局，小屏上下 */
+.wrapper{
+display:flex;flex:1;
+}
+/* 侧边竖导航（大屏） */
+.sidebar{
+width:130px;background:#fff;padding:16px 8px;
+display:flex;flex-direction:column;gap:8px;
+}
+.sidebar .nav-btn{
+width:100%;white-space:nowrap;padding:11px 8px;border-radius:12px;border:none;
+background:var(--card);color:var(--accent);font-size:13px;text-align:left;
+}
+.sidebar .nav-btn.active{background:var(--accent);color:#fff;}
+/* 内容区域 */
+.main-content{
+flex:1;padding:14px;overflow-y:auto;max-width:680px;
+}
+.search-box{
+width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--main);
+background:#fff;margin-bottom:16px;font-size:15px;outline:none;
+}
+.card{
+background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;
+box-shadow:0 1px 6px #0000000c;
+}
+.card-head{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:10px;
+}
+.card-title{font-weight:600;color:var(--accent);font-size:16px;}
+.card-time{font-size:12px;color:#888;}
+.card-content{line-height:1.7;font-size:15px;margin:10px 0;white-space:pre-wrap;}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.btn{
+padding:7px 11px;border-radius:9px;border:none;font-size:13px;cursor:pointer;
+}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-light{background:var(--sub);color:var(--accent);}
+.btn-danger{background:#ffdddd;color:#c44444;}
+.add-btn-wrap{position:fixed;right:22px;bottom:22px;z-index:98;}
+.add-btn{
+width:58px;height:58px;border-radius:50%;border:none;
+background:var(--accent);color:#fff;font-size:30px;box-shadow:0 4px 12px #00000022;
+}
+.section{display:none;}
+.section.show{display:block;}
+.fav-mark{color:#ffb800;}
+/* 弹窗样式 */
+.modal-mask{
+position:fixed;inset:0;background:#00000055;z-index:200;display:none;align-items:center;justify-content:center;padding:16px;
+}
+.modal-mask.open{display:flex;}
+.modal{
+width:100%;max-width:540px;background:#fff;border-radius:20px;padding:22px;
+}
+.modal textarea{
+width:100%;min-height:130px;padding:12px;border-radius:12px;border:1px solid var(--main);margin:12px 0;font-size:15px;outline:none;
+}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.modal-close{border:none;background:none;font-size:24px;cursor:pointer;color:#777;}
+.empty-tip{text-align:center;padding:50px 0;color:#999;}
+
+/* 📱小屏幕适配：宽度<768px，侧边栏切换底部横向导航 */
+.bottom-nav{display:none;}
+@media (max-width:768px){
+.wrapper{flex-direction:column;}
+.sidebar{display:none;}
+.bottom-nav{
+display:flex;overflow-x:auto;background:#fff;padding:10px 6px;gap:6px;
+position:sticky;bottom:0;scrollbar-width:none;
+}
+.bottom-nav::-webkit-scrollbar{display:none;}
+.bottom-nav .nav-btn{
+white-space:nowrap;padding:8px 12px;border-radius:99px;border:none;
+background:var(--card);color:var(--accent);font-size:13px;
+}
+.bottom-nav .nav-btn.active{background:var(--accent);color:#fff;}
+body{padding-bottom:70px;}
+}
+</style>
+</head>
+<body>
+<div class="top-datetime" id="timeBar"></div>
+
+<div class="wrapper">
+    <!-- 左侧【竖排侧边导航】大屏可见 -->
+    <div class="sidebar">
+        <button class="nav-btn active" data-target="home">🏠首页</button>
+        <button class="nav-btn" data-target="fit">🥗减脂管理</button>
+        <button class="nav-btn" data-target="bill">💰家庭记账</button>
+        <button class="nav-btn" data-target="text">📜文案素材库</button>
+        <button class="nav-btn" data-target="photo">📸拍照笔记</button>
+        <button class="nav-btn" data-target="makeup">💄妆容分享</button>
+        <button class="nav-btn" data-target="kid">📖孩子作业区</button>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!--首页-->
+        <div class="section show" id="home">
+            <div class="card">
+                <div class="card-title">💖 Pink自律多功能工作台</div>
+                <div class="card-content">
+减脂｜记账｜文案｜摄影｜妆容｜亲子学习<br><br>
+好好生活，持续变美，稳步搞钱✨
+                </div>
+            </div>
+        </div>
+
+        <!--减脂-->
+        <div class="section" id="fit">
+            <input class="search-box" placeholder="🔍 搜索减脂相关内容..." data-type="fit">
+            <div id="list-fit"></div>
+        </div>
+
+        <!--记账-->
+        <div class="section" id="bill">
+            <input class="search-box" placeholder="🔍 搜索记账收支内容..." data-type="bill">
+            <div id="list-bill"></div>
+        </div>
+
+        <!--文案库-->
+        <div class="section" id="text">
+            <input class="search-box" placeholder="🔍 搜索文案素材..." data-type="text">
+            <div id="list-text"></div>
+        </div>
+
+        <!--拍照-->
+        <div class="section" id="photo">
+            <input class="search-box" placeholder="🔍 搜索摄影笔记..." data-type="photo">
+            <div id="list-photo"></div>
+        </div>
+
+        <!--妆容-->
+        <div class="section" id="makeup">
+            <input class="search-box" placeholder="🔍 搜索妆容分享..." data-type="makeup">
+            <div id="list-makeup"></div>
+        </div>
+
+        <!--亲子作业-->
+        <div class="section" id="kid">
+            <input class="search-box" placeholder="🔍 搜索孩子学习记录..." data-type="kid">
+            <div id="list-kid"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 📱手机小屏：底部横向导航（屏幕窄自动出现） -->
+<div class="bottom-nav">
+    <button class="nav-btn active" data-target="home">🏠首页</button>
+    <button class="nav-btn" data-target="fit">🥗减脂</button>
+    <button class="nav-btn" data-target="bill">💰记账</button>
+    <button class="nav-btn" data-target="text">📜文案</button>
+    <button class="nav-btn" data-target="photo">📸摄影</button>
+    <button class="nav-btn" data-target="makeup">💄妆容</button>
+    <button class="nav-btn" data-target="kid">📖学习</button>
+</div>
+
+<!--新增按钮-->
+<div class="add-btn-wrap">
+<button class="add-btn" id="openAddModal">+</button>
+</div>
+
+<!--弹窗：新增/编辑内容-->
+<div class="modal-mask" id="modal">
+<div class="modal">
+<div class="modal-top">
+<span id="modalTitle">新建内容</span>
+<button class="modal-close" id="closeModal">×</button>
+</div>
+<select id="modalType" style="width:100%;padding:10px;border-radius:12px;border:1px solid var(--main);margin-bottom:10px;">
+<option value="fit">🥗减脂管理</option>
+<option value="bill">💰家庭记账</option>
+<option value="text">📜文案素材库</option>
+<option value="photo">📸拍照笔记</option>
+<option value="makeup">💄妆容分享</option>
+<option value="kid">📖孩子作业区</option>
+</select>
+<textarea id="modalContent" placeholder="输入内容..."></textarea>
+<div style="display:flex;gap:12px;">
+<button class="btn btn-light" id="cancelSave">取消</button>
+<button class="btn btn-primary" id="submitSave">保存</button>
+</div>
+</div>
+</div>
+
+<script>
+// ========== 全局数据与本地存储 ==========
+const STORAGE_KEY = "pink_workbench_data";
+let editId = null;
+let activeTab = "home";
+
+// 初始化数据
+function loadData(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+function saveData(list){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
+let dataList = loadData();
+
+// ========== 顶部秒级时间 ==========
+function updateTime(){
+  const now = new Date();
+  const weekArr=["周日","周一","周二","周三","周四","周五","周六"];
+  const y = now.getFullYear();
+  const m = String(now.getMonth()+1).padStart(2,'0');
+  const d = String(now.getDate()).padStart(2,'0');
+  const w = weekArr[now.getDay()];
+  const h = String(now.getHours()).padStart(2,'0');
+  const mi = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById("timeBar").innerText = `${y}年${m}月${d}日 ${w} ${h}:${mi}:${s}`;
+}
+updateTime();
+setInterval(updateTime,1000);
+
+// ========== 导航切换（同时绑定侧边竖导航+底部横导航） ==========
+const allNavBtns = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".section");
+allNavBtns.forEach(btn=>{
+  btn.onclick = ()=>{
+    const target = btn.dataset.target;
+    activeTab = target;
+    // 同步双向导航激活状态
+    allNavBtns.forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(`.nav-btn[data-target="${target}"]`).forEach(b=>b.classList.add("active"));
+    sections.forEach(s=>s.classList.remove("show"));
+    document.getElementById(target).classList.add("show");
+    renderAllLists();
+  }
+})
+
+// ========== 渲染列表（时间倒序） ==========
+function renderList(type, keyword=""){
+  const wrap = document.getElementById("list-"+type);
+  let arr = dataList.filter(item=>item.type === type);
+  // 最新置顶 时间倒序
+  arr.sort((a,b)=>b.timeStamp - a.timeStamp);
+  // 搜索过滤
+  if(keyword){
+    arr = arr.filter(item=>item.content.includes(keyword));
+  }
+  if(arr.length===0){
+    wrap.innerHTML = `<div class="empty-tip">暂无内容，点击右下角 + 添加</div>`;
+    return;
+  }
+  let html = "";
+  arr.forEach(item=>{
+    const dateStr = new Date(item.timeStamp).toLocaleString();
+    const favIcon = item.favorite ? `<span class="fav-mark">★</span>` : "";
+    html += `
+    <div class="card" data-id="${item.id}">
+      <div class="card-head">
+        <span class="card-title">${favIcon}记录</span>
+        <span class="card-time">${dateStr}</span>
+      </div>
+      <div class="card-content">${escapeHtml(item.content)}</div>
+      <div class="btn-row">
+        <button class="btn btn-light copyBtn" data-id="${item.id}">复制</button>
+        <button class="btn btn-light favBtn" data-id="${item.id}">${item.favorite?"取消收藏":"收藏"}</button>
+        <button class="btn btn-light editBtn" data-id="${item.id}">编辑</button>
+        <button class="btn btn-danger delBtn" data-id="${item.id}">删除</button>
+      </div>
+    </div>
+    `
+  })
+  wrap.innerHTML = html;
+  bindItemEvent();
+}
+function renderAllLists(){
+  ["fit","bill","text","photo","makeup","kid"].forEach(t=>renderList(t));
+}
+
+// html转义
+function escapeHtml(str){
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+
+// ========== 条目按钮事件：复制/收藏/编辑/删除 ==========
+function bindItemEvent(){
+  document.querySelectorAll(".copyBtn").forEach(btn=>{
+    btn.onclick = async ()=>{
+      const id = btn.dataset.id;
+      const item = dataList.find(d=>d.id===id);
+      await navigator.clipboard.writeText(item.content);
+      alert("已复制！");
+    }
+  })
+  document.querySelectorAll(".favBtn").forEach(btn=>{
+    btn.onclick = ()=>{
+      const id = btn.dataset.id;
+      const item = dataList.find(d=>d.id===id);
+      item.favorite = !item.favorite;
+      saveData(dataList);
+      renderAllLists();
+    }
+  })
+  document.querySelectorAll(".editBtn").forEach(btn=>{
+    btn.onclick = ()=>{
+      const id = btn.dataset.id;
+      const item = dataList.find(d=>d.id===id);
+      editId = id;
+      document.getElementById("modalTitle").innerText="编辑内容";
+      document.getElementById("modalType").value = item.type;
+      document.getElementById("modalContent").value = item.content;
+      openModal();
+    }
+  })
+  document.querySelectorAll(".delBtn").forEach(btn=>{
+    btn.onclick = ()=>{
+      if(!confirm("确定删除这条记录？"))return;
+      const id = btn.dataset.id;
+      dataList = dataList.filter(d=>d.id!==id);
+      saveData(dataList);
+      renderAllLists();
+    }
+  })
+}
+
+// ========== 弹窗控制 ==========
+const modal = document.getElementById("modal");
+function openModal(){modal.classList.add("open");}
+function closeModal(){
+  modal.classList.remove("open");
+  editId = null;
+  document.getElementById("modalTitle").innerText="新建内容";
+  document.getElementById("modalContent").value = "";
+}
+document.getElementById("openAddModal").onclick = ()=>{
+  // 默认选中当前分类
+  if(activeTab !== "home") document.getElementById("modalType").value = activeTab;
+  openModal();
+}
+document.getElementById("closeModal").onclick = closeModal;
+document.getElementById("cancelSave").onclick = closeModal;
+
+// 保存新增/编辑
+document.getElementById("submitSave").onclick = ()=>{
+  const type = document.getElementById("modalType").value;
+  const content = document.getElementById("modalContent").value.trim();
+  if(!content){alert("请输入内容！");return;}
+  if(editId){
+    // 修改
+    const obj = dataList.find(d=>d.id===editId);
+    obj.type = type;
+    obj.content = content;
+    obj.timeStamp = Date.now();
+  }else{
+    // 新建
+    const newItem = {
+      id: String(Date.now()),
+      type: type,
+      content: content,
+      favorite: false,
+      timeStamp: Date.now()
+    }
+    dataList.unshift(newItem);
+  }
+  saveData(dataList);
+  renderAllLists();
+  closeModal();
+}
+
+// ========== 搜索绑定 ==========
+document.querySelectorAll(".search-box").forEach(input=>{
+  input.oninput = ()=>{
+    const type = input.dataset.type;
+    const keyword = input.value.trim();
+    renderList(type, keyword);
+  }
+})
+
+// ========== PWA注册 ==========
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+
+// 初始化渲染
+renderAllLists();
+</script>
+</body>
+</html>
